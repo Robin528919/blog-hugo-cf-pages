@@ -4,9 +4,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目概述
 
-Hugo 博客站点，部署在 Cloudflare Pages。目标：国际访问稳定、优化中国大陆访问体验、全流程自动化发布。
+**亿思 (E.S)** — Hugo 博客站点，部署在 Cloudflare Pages。目标：国际访问稳定、优化中国大陆访问体验、全流程自动化发布。
 
-- 站点地址：`https://blog-hugo-cf-pages.pages.dev/`
+- 品牌：亿思 (E.S)，域名 es007
+- 站点地址：`https://blog.es007.com/`
 - 语言：中文 (`zh-cn`)
 - 当前状态：初始骨架阶段，尚无主题，使用自定义 `layouts/index.html` 作为首页
 

@@ -1,6 +1,6 @@
 baseURL = "https://blog-hugo-cf-pages.pages.dev/"
 languageCode = "zh-cn"
-title = "Hugo 博客"
+title = "E.S 博客"
 
 [outputs]
 home = ["HTML"]
