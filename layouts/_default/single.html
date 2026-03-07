@@ -1,64 +1,14 @@
 <!doctype html>
 <html lang="zh-CN">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ .Title }} - {{ .Site.Title }}</title>
+    {{ partial "head.html" . }}
     <style>
-      :root {
-        --bg: #0a0a0b;
-        --surface: #141415;
-        --border: #27272a;
-        --text: #fafafa;
-        --sub: #a1a1aa;
-        --accent: #3b82f6;
-        --accent-dim: rgba(59, 130, 246, 0.12);
-        --code-bg: #1e1e21;
-      }
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body {
-        min-height: 100vh;
-        font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        line-height: 1.8;
-      }
       a { color: var(--accent); text-decoration: none; }
       a:hover { text-decoration: underline; }
+      .nav-links a { color: var(--sub); }
+      .nav-links a:hover { text-decoration: none; }
 
-      /* header */
-      .header {
-        border-bottom: 1px solid var(--border);
-        padding: 0 24px;
-      }
-      .header-inner {
-        max-width: 720px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 56px;
-      }
-      .logo {
-        font-size: 18px;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        color: var(--text);
-      }
-      .nav-links { display: flex; gap: 24px; }
-      .nav-links a {
-        color: var(--sub);
-        font-size: 14px;
-        transition: color 0.2s;
-      }
-      .nav-links a:hover { color: var(--text); text-decoration: none; }
-
-      /* article */
-      .container {
-        max-width: 720px;
-        margin: 0 auto;
-        padding: 48px 24px 80px;
-      }
       .article-header { margin-bottom: 40px; }
       .article-header h1 {
         font-size: clamp(24px, 5vw, 32px);
@@ -74,11 +24,7 @@
         color: var(--sub);
         font-size: 14px;
       }
-      .article-tags {
-        display: flex;
-        gap: 6px;
-        flex-wrap: wrap;
-      }
+      .article-tags { display: flex; gap: 6px; flex-wrap: wrap; }
       .article-tag {
         font-size: 12px;
         color: var(--accent);
@@ -88,7 +34,7 @@
       }
 
       /* content */
-      .article-content { font-size: 16px; color: #d4d4d8; }
+      .article-content { font-size: 16px; color: var(--content-text); line-height: 1.8; }
       .article-content h2 {
         font-size: 22px;
         font-weight: 700;
@@ -124,7 +70,6 @@
         background: var(--code-bg);
         padding: 2px 6px;
         border-radius: 4px;
-        color: #e4e4e7;
       }
       .article-content pre {
         margin: 20px 0;
@@ -146,7 +91,6 @@
         margin: 40px 0;
       }
 
-      /* back link */
       .back-link {
         display: inline-flex;
         align-items: center;
@@ -164,27 +108,10 @@
         background: var(--surface);
         text-decoration: none;
       }
-
-      /* footer */
-      .footer {
-        border-top: 1px solid var(--border);
-        padding: 24px;
-        text-align: center;
-        color: var(--sub);
-        font-size: 13px;
-      }
     </style>
   </head>
   <body>
-    <header class="header">
-      <div class="header-inner">
-        <a class="logo" href="/">{{ .Site.Title }}</a>
-        <nav class="nav-links">
-          <a href="/">首页</a>
-          <a href="/posts/">文章</a>
-        </nav>
-      </div>
-    </header>
+    {{ partial "header.html" . }}
 
     <main class="container">
       <article>
@@ -208,8 +135,6 @@
       <a class="back-link" href="/">&larr; 返回首页</a>
     </main>
 
-    <footer class="footer">
-      &copy; {{ now.Year }} {{ .Site.Title }}
-    </footer>
+    {{ partial "footer.html" . }}
   </body>
 </html>
