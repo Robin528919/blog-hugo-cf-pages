@@ -40,12 +40,17 @@
 
   body {
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
     transition: background 0.3s, color 0.3s;
   }
+
+  /* main content grows to fill space */
+  .container { flex: 1; }
 
   /* header */
   .header {
