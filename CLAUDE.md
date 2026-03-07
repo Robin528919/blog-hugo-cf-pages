@@ -28,13 +28,23 @@ hugo --gc --minify
 ## 目录结构与约束
 
 - `content/` — 博客文章与页面，slug 建议 `kebab-case`
-- `layouts/` — Hugo 模板（当前仅首页模板）
+- `layouts/` — Hugo 模板，基于 baseof.html + block 继承体系
 - `themes/` — 主题目录（按需添加，禁止跨目录复制主题实现）
 - `static/` — 静态资源
 - `docs/` — 架构、运维、流程类技术文档（所有文档必须放此目录）
 - `public/` — 构建产物（`.gitignore` 已忽略，禁止手工修改）
 
 **根目录保持精简**：仅保留 `README.md`、`CLAUDE.md`、`AGENTS.md`、`hugo.toml` 等全局入口文件，技术文档一律放 `docs/`。
+
+## 模板架构
+
+- `layouts/_default/baseof.html` — 基础模板骨架，所有页面继承此模板
+- `layouts/partials/head.html` — `<head>` 公共内容（CSS 变量、亮暗模式初始化脚本）
+- `layouts/partials/header.html` — 顶部导航栏（含主题切换按钮）
+- `layouts/partials/footer.html` — 底部（含 `toggleTheme()` 脚本）
+- 页面模板通过 `{{ define "main" }}` 和 `{{ define "head" }}` 块扩展 baseof
+- **新增页面必须使用 block 继承 baseof，禁止独立定义完整 HTML 结构**
+- 亮暗模式：CSS 变量 + `data-theme="light"` 属性 + `localStorage` 持久化
 
 ## 分支与部署
 

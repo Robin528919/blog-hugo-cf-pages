@@ -1,70 +1,62 @@
-<!doctype html>
-<html lang="zh-CN">
-  <head>
-    <title>{{ .Site.Title }}</title>
-    {{ partial "head.html" . }}
-    <style>
-      .hero { margin-bottom: 48px; }
-      .hero h1 {
-        font-size: clamp(28px, 5vw, 36px);
-        font-weight: 800;
-        letter-spacing: -0.03em;
-        margin-bottom: 12px;
-      }
-      .hero p {
-        color: var(--sub);
-        font-size: 16px;
-        max-width: 520px;
-      }
-      .section-title {
-        font-size: 13px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--sub);
-        margin-bottom: 16px;
-      }
-      .empty {
-        text-align: center;
-        padding: 64px 0;
-        color: var(--sub);
-      }
-    </style>
-  </head>
-  <body>
-    {{ partial "header.html" . }}
+{{ define "title" }}{{ .Site.Title }}{{ end }}
 
-    <main class="container">
-      <section class="hero">
-        <h1>{{ .Site.Title }}</h1>
-        <p>{{ .Site.Params.description | default "记录技术探索与实践" }}</p>
-      </section>
+{{ define "head" }}
+<style>
+  .hero { margin-bottom: 48px; }
+  .hero h1 {
+    font-size: clamp(28px, 5vw, 36px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+  .hero p {
+    color: var(--sub);
+    font-size: 16px;
+    max-width: 520px;
+  }
+  .section-title {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--sub);
+    margin-bottom: 16px;
+  }
+  .empty {
+    text-align: center;
+    padding: 64px 0;
+    color: var(--sub);
+  }
+</style>
+{{ end }}
 
-      <p class="section-title">最新文章</p>
-      <div class="post-list">
-        {{ $pages := where .Site.RegularPages "Section" "posts" }}
-        {{ if $pages }}
-          {{ range first 20 $pages.ByDate.Reverse }}
-          <a class="post-item" href="{{ .Permalink }}">
-            <div class="post-content">
-              <div class="post-title">{{ .Title }}</div>
-              {{ with .Params.tags }}
-              <div class="post-tags">
-                {{ range first 3 . }}
-                <span class="post-tag">{{ . }}</span>
-                {{ end }}
-              </div>
-              {{ end }}
-            </div>
-            <time class="post-date">{{ .Date.Format "2006-01-02" }}</time>
-          </a>
+{{ define "main" }}
+<section class="hero">
+  <h1>{{ .Site.Title }}</h1>
+  <p>{{ .Site.Params.description | default "记录技术探索与实践" }}</p>
+</section>
+
+<p class="section-title">最新文章</p>
+<div class="post-list">
+  {{ $pages := where .Site.RegularPages "Section" "posts" }}
+  {{ if $pages }}
+    {{ range first 20 $pages.ByDate.Reverse }}
+    <a class="post-item" href="{{ .Permalink }}">
+      <div class="post-content">
+        <div class="post-title">{{ .Title }}</div>
+        {{ with .Params.tags }}
+        <div class="post-tags">
+          {{ range first 3 . }}
+          <span class="post-tag">{{ . }}</span>
           {{ end }}
-        {{ else }}
-          <div class="empty">暂无文章</div>
+        </div>
         {{ end }}
       </div>
-    </main>
-
-    {{ partial "footer.html" . }}
-  </body>
-</html>
+      <time class="post-date">{{ .Date.Format "2006-01-02" }}</time>
+    </a>
+    {{ end }}
+  {{ else }}
+    <div class="empty">暂无文章</div>
+  {{ end }}
+</div>
+{{ end }}
