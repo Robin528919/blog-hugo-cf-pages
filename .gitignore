@@ -2,3 +2,4 @@ public/
 .wrangler/
 .DS_Store
 .hugo_build.lock
+.claude/skills/ui-ux-pro-max/*
