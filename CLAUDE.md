@@ -38,9 +38,9 @@ hugo --gc --minify
 
 ## 分支与部署
 
-- 推送到 GitHub 后 Cloudflare Pages 自动构建部署，无需手动操作
-- `main` → 生产环境
-- PR / `develop` → Preview 预览环境
+- `main` → 生产环境（推送后 Cloudflare Pages 自动构建部署）
+- `develop` → 日常开发分支（Preview 预览环境）
+- 工作流：在 `develop` 开发提交 → 完成后合并到 `main` → 推送部署
 - Hugo 版本通过 Cloudflare 环境变量 `HUGO_VERSION` 固定
 
 ## 提交规范
