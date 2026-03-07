@@ -57,6 +57,8 @@ hugo --gc --minify
 
 使用轻量前缀：`feat:`、`fix:`、`docs:`、`chore:`、`refactor:`、`perf:`
 
+**禁止在提交信息中出现任何 AI 标识**：包括 `Co-Authored-By: Claude`、`AI-generated`、`ChatGPT`、`Copilot` 等。
+
 ## 中国大陆访问优化要点
 
 - 关键资源（字体、JS、CSS）本地化，不依赖第三方海外域名
