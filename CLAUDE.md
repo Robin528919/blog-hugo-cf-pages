@@ -25,13 +25,28 @@ hugo --gc --minify
 
 **提交前必须**：成功运行 `hugo --gc --minify` 确认构建无误。
 
+## 文章 Front Matter 格式
+
+```yaml
+---
+title: "文章标题"
+date: 2026-03-17T10:00:00+08:00
+draft: false
+tags: ["标签1", "标签2"]
+---
+```
+
+- `draft: true` 仅在 `hugo server -D` 时可见，不会被生产构建
+- 文档类内容如需发布为博客文章，必须放 `content/posts/` 并添加 front matter
+
 ## 目录结构与约束
 
 - `content/` — 博客文章与页面，slug 建议 `kebab-case`
+- `content/posts/` — 博客文章目录，文章发布后 URL 为 `/posts/<文件名去.md>/`
 - `layouts/` — Hugo 模板，基于 baseof.html + block 继承体系
 - `themes/` — 主题目录（按需添加，禁止跨目录复制主题实现）
 - `static/` — 静态资源
-- `docs/` — 架构、运维、流程类技术文档（所有文档必须放此目录）
+- `docs/` — 架构、运维、流程类技术文档（所有文档必须放此目录，不会被 Hugo 构建）
 - `public/` — 构建产物（`.gitignore` 已忽略，禁止手工修改）
 
 **根目录保持精简**：仅保留 `README.md`、`CLAUDE.md`、`AGENTS.md`、`hugo.toml` 等全局入口文件，技术文档一律放 `docs/`。
