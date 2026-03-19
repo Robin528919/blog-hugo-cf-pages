@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="200" fill="url(#bg2)" rx="12"/>
+
+  <!-- Step 1 -->
+  <g transform="translate(40, 40)">
+    <circle cx="30" cy="30" r="28" fill="#1e293b" stroke="#76b900" stroke-width="2"/>
+    <text x="30" y="36" text-anchor="middle" fill="#76b900" font-family="system-ui, sans-serif" font-size="22" font-weight="bold">1</text>
+    <text x="30" y="85" text-anchor="middle" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="14" font-weight="600">注册账号</text>
+    <text x="30" y="108" text-anchor="middle" fill="#64748b" font-family="ui-monospace, monospace" font-size="10">build.nvidia.com</text>
+    <text x="30" y="126" text-anchor="middle" fill="#64748b" font-family="system-ui, sans-serif" font-size="11">免费开发者计划</text>
+  </g>
+
+  <!-- Arrow -->
+  <line x1="110" y1="70" x2="220" y2="70" stroke="#334155" stroke-width="2" stroke-dasharray="6 3"/>
+  <polygon points="220,65 232,70 220,75" fill="#334155"/>
+
+  <!-- Step 2 -->
+  <g transform="translate(250, 40)">
+    <circle cx="30" cy="30" r="28" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+    <text x="30" y="36" text-anchor="middle" fill="#3b82f6" font-family="system-ui, sans-serif" font-size="22" font-weight="bold">2</text>
+    <text x="30" y="85" text-anchor="middle" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="14" font-weight="600">获取 API Key</text>
+    <text x="30" y="108" text-anchor="middle" fill="#64748b" font-family="ui-monospace, monospace" font-size="10">nvapi-xxxxxx</text>
+    <text x="30" y="126" text-anchor="middle" fill="#64748b" font-family="system-ui, sans-serif" font-size="11">1,000 免费积分</text>
+  </g>
+
+  <!-- Arrow -->
+  <line x1="320" y1="70" x2="430" y2="70" stroke="#334155" stroke-width="2" stroke-dasharray="6 3"/>
+  <polygon points="430,65 442,70 430,75" fill="#334155"/>
+
+  <!-- Step 3 -->
+  <g transform="translate(460, 40)">
+    <circle cx="30" cy="30" r="28" fill="#1e293b" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="30" y="36" text-anchor="middle" fill="#8b5cf6" font-family="system-ui, sans-serif" font-size="22" font-weight="bold">3</text>
+    <text x="30" y="85" text-anchor="middle" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="14" font-weight="600">设环境变量</text>
+    <text x="30" y="108" text-anchor="middle" fill="#64748b" font-family="ui-monospace, monospace" font-size="10">NVIDIA_API_KEY</text>
+    <text x="30" y="126" text-anchor="middle" fill="#64748b" font-family="system-ui, sans-serif" font-size="11">写入 ~/.zshrc</text>
+  </g>
+
+  <!-- Arrow -->
+  <line x1="530" y1="70" x2="640" y2="70" stroke="#334155" stroke-width="2" stroke-dasharray="6 3"/>
+  <polygon points="640,65 652,70 640,75" fill="#334155"/>
+
+  <!-- Step 4 -->
+  <g transform="translate(670, 40)">
+    <circle cx="30" cy="30" r="28" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <text x="30" y="36" text-anchor="middle" fill="#f59e0b" font-family="system-ui, sans-serif" font-size="22" font-weight="bold">4</text>
+    <text x="30" y="85" text-anchor="middle" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="14" font-weight="600">配置 OpenClaw</text>
+    <text x="30" y="108" text-anchor="middle" fill="#64748b" font-family="ui-monospace, monospace" font-size="10">openclaw.json</text>
+    <text x="30" y="126" text-anchor="middle" fill="#64748b" font-family="system-ui, sans-serif" font-size="11">models.providers</text>
+  </g>
+
+  <!-- Arrow -->
+  <line x1="740" y1="70" x2="850" y2="70" stroke="#334155" stroke-width="2" stroke-dasharray="6 3"/>
+  <polygon points="850,65 862,70 850,75" fill="#334155"/>
+
+  <!-- Step 5 -->
+  <g transform="translate(880, 40)">
+    <circle cx="30" cy="30" r="28" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+    <text x="30" y="36" text-anchor="middle" fill="#10b981" font-family="system-ui, sans-serif" font-size="22" font-weight="bold">5</text>
+    <text x="30" y="85" text-anchor="middle" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="14" font-weight="600">开始对话</text>
+    <text x="30" y="108" text-anchor="middle" fill="#64748b" font-family="ui-monospace, monospace" font-size="10">openclaw models list</text>
+    <text x="30" y="126" text-anchor="middle" fill="#64748b" font-family="system-ui, sans-serif" font-size="11">验证 → 使用</text>
+  </g>
+
+  <!-- Title -->
+  <text x="600" y="185" text-anchor="middle" fill="#475569" font-family="system-ui, sans-serif" font-size="13">全程 5 分钟，零成本接入</text>
+</svg>
