@@ -104,6 +104,58 @@
     background: var(--surface);
     text-decoration: none;
   }
+
+  /* images */
+  .article-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    cursor: zoom-in;
+    transition: opacity 0.2s;
+  }
+  .article-content img:hover { opacity: 0.9; }
+
+  /* lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+    padding: 24px;
+  }
+  .lightbox.active { display: flex; }
+  .lightbox img {
+    max-width: 95vw;
+    max-height: 92vh;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    object-fit: contain;
+  }
+  .lightbox-close {
+    position: fixed;
+    top: 16px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .lightbox-close:hover { background: rgba(255,255,255,0.15); }
 </style>
 {{ end }}
 
@@ -127,4 +179,39 @@
   </div>
 </article>
 <a class="back-link" href="/">&larr; 返回首页</a>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" aria-label="关闭">&times;</button>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
+<script>
+(function(){
+  var box = document.getElementById('lightbox');
+  var boxImg = document.getElementById('lightbox-img');
+  var imgs = document.querySelectorAll('.article-content img');
+
+  imgs.forEach(function(img){
+    img.addEventListener('click', function(){
+      boxImg.src = img.src;
+      boxImg.alt = img.alt;
+      box.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function close(){
+    box.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  box.addEventListener('click', function(e){
+    if(e.target !== boxImg) close();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') close();
+  });
+})();
+</script>
 {{ end }}
