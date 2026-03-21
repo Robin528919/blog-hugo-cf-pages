@@ -1,0 +1,39 @@
+name: Deploy to Aliyun OSS
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.157.0"
+          extended: true
+
+      - name: Build for China site
+        run: hugo --gc --minify --baseURL "https://blog.es007.cn/"
+
+      - name: Install ossutil
+        run: |
+          curl -fsSL https://gosspublic.alicdn.com/ossutil/install.sh | sudo bash
+
+      - name: Deploy to OSS
+        env:
+          OSS_ACCESS_KEY_ID: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
+          OSS_ACCESS_KEY_SECRET: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+        run: |
+          ossutil config \
+            -e oss-cn-beijing.aliyuncs.com \
+            -i "$OSS_ACCESS_KEY_ID" \
+            -k "$OSS_ACCESS_KEY_SECRET"
+          ossutil sync ./public/ oss://es007-blog/ \
+            --delete \
+            --force \
+            --retry-times 3
