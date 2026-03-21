@@ -1,291 +1,291 @@
 ---
 name: technical-blog-writing
-description: "Technical blog post writing with structure, code examples, and developer audience conventions. Covers post types, code formatting, explanation depth, and developer-specific engagement patterns. Use for: engineering blogs, dev tutorials, technical writing, developer content, documentation posts. Triggers: technical blog, dev blog, engineering blog, technical writing, developer tutorial, tech post, code tutorial, programming blog, developer content, technical article, engineering post, coding tutorial, technical content"
+description: "技术博客写作技能，涵盖文章结构、代码示例和开发者受众规范。包含文章类型、代码格式、讲解深度和开发者内容模式。适用于：技术博客、开发教程、技术写作、开发者内容、文档类文章。触发词：技术博客、开发博客、工程博客、技术写作、开发教程、技术文章、代码教程、编程博客、开发者内容、技术内容、technical blog、dev blog、engineering blog"
 allowed-tools: Bash(infsh *)
 ---
 
-# Technical Blog Writing
+# 技术博客写作
 
-Write developer-focused technical blog posts via [inference.sh](https://inference.sh) CLI.
+通过 [inference.sh](https://inference.sh) CLI 编写面向开发者的技术博客文章。
 
-## Quick Start
+## 快速开始
 
-> Requires inference.sh CLI (`infsh`). [Install instructions](https://raw.githubusercontent.com/inference-sh/skills/refs/heads/main/cli-install.md)
+> 需要 inference.sh CLI（`infsh`）。[安装说明](https://raw.githubusercontent.com/inference-sh/skills/refs/heads/main/cli-install.md)
 
 ```bash
 infsh login
 
-# Research topic depth
+# 调研主题深度
 infsh app run exa/search --input '{
   "query": "building REST API Node.js best practices 2024 tutorial"
 }'
 
-# Generate header image
+# 生成头图
 infsh app run infsh/html-to-image --input '{
   "html": "<div style=\"width:1200px;height:630px;background:linear-gradient(135deg,#0f172a,#1e293b);display:flex;align-items:center;padding:60px;font-family:ui-monospace,monospace;color:white\"><div><p style=\"font-size:18px;color:#38bdf8;margin:0\">// engineering blog</p><h1 style=\"font-size:48px;margin:16px 0;font-weight:800;font-family:system-ui;line-height:1.2\">How We Reduced API Latency by 90% with Edge Caching</h1><p style=\"font-size:20px;opacity:0.6;font-family:system-ui\">A deep dive into our CDN architecture</p></div></div>"
 }'
 ```
 
 
-## Post Types
+## 文章类型
 
-### 1. Tutorial / How-To
+### 1. 教程 / 操作指南
 
-Step-by-step instruction. The reader should be able to follow along and build something.
-
-```
-Structure:
-1. What we're building (with screenshot/demo)
-2. Prerequisites
-3. Step 1: Setup
-4. Step 2: Core implementation
-5. Step 3: ...
-6. Complete code (GitHub link)
-7. Next steps / extensions
-```
-
-| Rule | Why |
-|------|-----|
-| Show the end result first | Reader knows if it's worth continuing |
-| List prerequisites explicitly | Don't waste time of wrong audience |
-| Every code block should be runnable | Copy-paste-run is the test |
-| Explain the "why" not just the "how" | Tutorials that explain reasoning get shared |
-| Include error handling | Real code has errors |
-| Link to complete code repo | Reference after tutorial |
-
-### 2. Deep Dive / Explainer
-
-Explains a concept, technology, or architecture decision in depth.
+逐步教学。读者应能跟着做并构建出成果。
 
 ```
-Structure:
-1. What is [concept] and why should you care?
-2. How it works (simplified mental model)
-3. How it works (detailed mechanics)
-4. Real-world example
-5. Trade-offs and when NOT to use it
-6. Further reading
+结构：
+1. 我们要构建什么（附截图/演示）
+2. 前置条件
+3. 第一步：环境搭建
+4. 第二步：核心实现
+5. 第三步：...
+6. 完整代码（GitHub 链接）
+7. 后续拓展 / 进阶方向
 ```
 
-### 3. Postmortem / Incident Report
+| 规则 | 原因 |
+|------|------|
+| 先展示最终效果 | 读者能判断是否值得继续阅读 |
+| 明确列出前置条件 | 避免浪费非目标读者的时间 |
+| 每个代码块都应可运行 | 复制-粘贴-运行是检验标准 |
+| 解释"为什么"而非仅"怎么做" | 讲清原理的教程更容易被分享 |
+| 包含错误处理 | 真实代码都有错误处理 |
+| 链接到完整代码仓库 | 教程结束后的参考 |
 
-Describes what went wrong, why, and what was fixed.
+### 2. 深入解析 / 概念讲解
 
-```
-Structure:
-1. Summary (what happened, impact, duration)
-2. Timeline of events
-3. Root cause analysis
-4. Fix implemented
-5. What we're doing to prevent recurrence
-6. Lessons learned
-```
-
-### 4. Benchmark / Comparison
-
-Data-driven comparison of tools, approaches, or architectures.
+深入解释一个概念、技术或架构决策。
 
 ```
-Structure:
-1. What we compared and why
-2. Methodology (so results are reproducible)
-3. Results with charts/tables
-4. Analysis (what the numbers mean)
-5. Recommendation (with caveats)
-6. Raw data / reproducibility instructions
+结构：
+1. [概念]是什么，为什么你应该关注？
+2. 工作原理（简化心智模型）
+3. 工作原理（详细机制）
+4. 实际案例
+5. 权衡取舍及何时不该使用
+6. 延伸阅读
 ```
 
-### 5. Architecture / System Design
+### 3. 事后复盘 / 故障报告
 
-Explains how a system is built and why decisions were made.
-
-```
-Structure:
-1. Problem we needed to solve
-2. Constraints and requirements
-3. Options considered
-4. Architecture chosen (with diagram)
-5. Trade-offs we accepted
-6. Results and lessons
-```
-
-## Writing Rules for Developers
-
-### Voice and Tone
-
-| Do | Don't |
-|----|-------|
-| Be direct: "Use connection pooling" | "You might want to consider using..." |
-| Admit trade-offs: "This adds complexity" | Pretend your solution is perfect |
-| Use "we" for team decisions | "I single-handedly architected..." |
-| Specific numbers: "reduced p99 from 800ms to 90ms" | "significantly improved performance" |
-| Cite sources and benchmarks | Make unsourced claims |
-| Acknowledge alternatives | Pretend yours is the only way |
-
-### What Developers Hate
+描述出了什么问题、原因以及如何修复。
 
 ```
-❌ "In today's fast-paced world of technology..." (filler)
-❌ "As we all know..." (if we all know, why are you writing it?)
-❌ "Simply do X" (nothing is simple if you're reading a tutorial)
-❌ "It's easy to..." (dismissive of reader's experience)
-❌ "Obviously..." (if it's obvious, don't write it)
-❌ Marketing language in technical content
-❌ Burying the lede under 3 paragraphs of context
+结构：
+1. 摘要（发生了什么、影响范围、持续时间）
+2. 事件时间线
+3. 根因分析
+4. 实施的修复方案
+5. 预防措施
+6. 经验教训
 ```
 
-### Code Examples
+### 4. 基准测试 / 对比评测
 
-| Rule | Why |
-|------|-----|
-| Every code block must be runnable | Broken examples destroy trust |
-| Show complete, working examples | Snippets without context are useless |
-| Include language identifier in fenced blocks | Syntax highlighting |
-| Show output/result after code | Reader verifies understanding |
-| Use realistic variable names | `calculateTotalRevenue` not `foo` |
-| Include error handling in examples | Real code handles errors |
-| Pin dependency versions | "Works with React 18.2" not "React" |
+基于数据的工具、方案或架构对比。
 
 ```
-Good code block format:
+结构：
+1. 对比了什么以及为什么
+2. 测试方法（确保结果可复现）
+3. 结果及图表/表格
+4. 分析（数据意味着什么）
+5. 推荐方案（附注意事项）
+6. 原始数据 / 复现步骤
+```
+
+### 5. 架构 / 系统设计
+
+解释系统如何构建以及为何做出这些决策。
+
+```
+结构：
+1. 需要解决的问题
+2. 约束条件和需求
+3. 考虑过的方案
+4. 选定的架构（附架构图）
+5. 接受的权衡取舍
+6. 成果与经验
+```
+
+## 面向开发者的写作规则
+
+### 语气与风格
+
+| 应该 | 不应该 |
+|------|--------|
+| 直截了当："使用连接池" | "你可能需要考虑使用..." |
+| 坦诚权衡："这会增加复杂度" | 假装你的方案完美无缺 |
+| 团队决策用"我们" | "我独自一人设计了..." |
+| 给出具体数字："p99 从 800ms 降到 90ms" | "显著提升了性能" |
+| 引用来源和基准测试 | 做无来源的声明 |
+| 承认替代方案的存在 | 假装你的方案是唯一选择 |
+
+### 开发者讨厌的写法
+
+```
+❌ "在当今飞速发展的技术世界中..."（废话）
+❌ "众所周知..."（既然都知道，你写它干嘛？）
+❌ "只需简单地做 X"（如果你在看教程，说明它不简单）
+❌ "很容易就能..."（轻视读者的经验）
+❌ "显然..."（如果显而易见，就不用写了）
+❌ 在技术内容中使用营销话术
+❌ 在 3 段背景介绍之后才切入正题
+```
+
+### 代码示例
+
+| 规则 | 原因 |
+|------|------|
+| 每个代码块都必须可运行 | 有 bug 的示例会摧毁信任 |
+| 展示完整、可运行的示例 | 没有上下文的代码片段毫无用处 |
+| 在代码围栏中标注语言 | 语法高亮 |
+| 代码后展示输出/结果 | 读者可以验证理解是否正确 |
+| 使用有意义的变量名 | `calculateTotalRevenue` 而非 `foo` |
+| 示例中包含错误处理 | 真实代码都有错误处理 |
+| 锁定依赖版本 | "适用于 React 18.2" 而非 "React" |
+
+```
+好的代码块格式：
 
 ```python
-# What this code does (one line)
+# 这段代码的功能（一行说明）
 def calculate_retry_delay(attempt: int, base_delay: float = 1.0) -> float:
-    """Exponential backoff with jitter."""
+    """指数退避 + 随机抖动。"""
     delay = base_delay * (2 ** attempt)
     jitter = random.uniform(0, delay * 0.1)
     return delay + jitter
 
-# Usage
-delay = calculate_retry_delay(attempt=3)  # ~8.0-8.8 seconds
+# 使用方式
+delay = calculate_retry_delay(attempt=3)  # ~8.0-8.8 秒
 ```
 ```
 
-### Explanation Depth
+### 讲解深度
 
-| Audience Signal | Depth |
-|----------------|-------|
-| "Getting started with X" | Explain everything, assume no prior knowledge |
-| "Advanced X patterns" | Skip basics, go deep on nuances |
-| "X vs Y" | Assume familiarity with both, focus on differences |
-| "How we built X" | Technical audience, can skip fundamentals |
+| 受众信号 | 深度 |
+|----------|------|
+| "X 入门" | 解释一切，假设没有前置知识 |
+| "X 高级模式" | 跳过基础，深入细节和技巧 |
+| "X 对比 Y" | 假设读者熟悉两者，聚焦差异 |
+| "我们如何构建 X" | 技术读者，可跳过基本概念 |
 
-**State your assumed audience level explicitly** at the start:
+**在文章开头明确说明假定的读者水平**：
 
 ```
-"This post assumes familiarity with Docker and basic Kubernetes concepts.
-If you're new to containers, start with [our intro post]."
+"本文假设你熟悉 Docker 和基本的 Kubernetes 概念。
+如果你刚接触容器技术，请先阅读[我们的入门文章]。"
 ```
 
-## Blog Post Structure
+## 博客文章结构
 
-### The Ideal Structure
+### 理想结构
 
 ```markdown
-# Title (contains primary keyword, states outcome)
+# 标题（包含核心关键词，说明成果）
 
-[Hero image or diagram]
+[头图或架构图]
 
-**TL;DR:** [2-3 sentence summary with key takeaway]
+**TL;DR：**[2-3 句摘要，包含核心要点]
 
-## The Problem / Why This Matters
-[Set up why the reader should care — specific, not generic]
+## 问题 / 为什么重要
+[阐述读者为什么应该关心——要具体，不要泛泛而谈]
 
-## The Solution / How We Did It
-[Core content — code, architecture, explanation]
+## 解决方案 / 我们是怎么做的
+[核心内容——代码、架构、讲解]
 
-### Step 1: [First thing]
-[Explanation + code + output]
+### 第一步：[做什么]
+[讲解 + 代码 + 输出]
 
-### Step 2: [Second thing]
-[Explanation + code + output]
+### 第二步：[做什么]
+[讲解 + 代码 + 输出]
 
-## Results
-[Numbers, benchmarks, outcomes — be specific]
+## 成果
+[数据、基准测试、结果——要具体]
 
-## Trade-offs and Limitations
-[Honest about downsides — builds trust]
+## 权衡与局限
+[坦诚不足之处——建立信任]
 
-## Conclusion
-[Key takeaway + what to do next]
+## 结论
+[核心要点 + 下一步行动]
 
-## Further Reading
-[3-5 relevant links]
+## 延伸阅读
+[3-5 个相关链接]
 ```
 
-### Word Count by Type
+### 各类型推荐字数
 
-| Type | Word Count | Why |
-|------|-----------|-----|
-| Quick tip | 500-800 | One concept, one example |
-| Tutorial | 1,500-3,000 | Step-by-step needs detail |
-| Deep dive | 2,000-4,000 | Thorough exploration |
-| Architecture post | 2,000-3,500 | Diagrams carry some load |
-| Benchmark | 1,500-2,500 | Data and charts do heavy lifting |
+| 类型 | 字数 | 原因 |
+|------|------|------|
+| 快速技巧 | 500-800 | 一个概念，一个示例 |
+| 教程 | 1,500-3,000 | 逐步讲解需要充分细节 |
+| 深入解析 | 2,000-4,000 | 需要全面深入的探讨 |
+| 架构文章 | 2,000-3,500 | 图表分担了部分表达 |
+| 基准测试 | 1,500-2,500 | 数据和图表承担主要表达 |
 
-## Diagrams and Visuals
+## 图表与可视化
 
-### When to Use Diagrams
+### 何时使用图表
 
-| Scenario | Diagram Type |
-|----------|-------------|
-| Request flow | Sequence diagram |
-| System architecture | Box-and-arrow diagram |
-| Decision logic | Flowchart |
-| Data model | ER diagram |
-| Performance comparison | Bar/line chart |
-| Before/after | Side-by-side |
+| 场景 | 图表类型 |
+|------|----------|
+| 请求流程 | 时序图 |
+| 系统架构 | 方框箭头图 |
+| 决策逻辑 | 流程图 |
+| 数据模型 | ER 图 |
+| 性能对比 | 柱状图/折线图 |
+| 前后对比 | 并排展示 |
 
 ```bash
-# Generate architecture diagram
+# 生成架构图
 infsh app run infsh/html-to-image --input '{
   "html": "<div style=\"width:1200px;height:600px;background:#0f172a;display:flex;align-items:center;justify-content:center;padding:40px;font-family:system-ui;color:white\"><div style=\"display:flex;gap:40px;align-items:center\"><div style=\"background:#1e293b;border:2px solid #334155;border-radius:8px;padding:24px;text-align:center;width:160px\"><p style=\"font-size:14px;color:#94a3b8;margin:0\">Client</p><p style=\"font-size:18px;font-weight:bold;margin:8px 0 0\">React App</p></div><div style=\"color:#64748b;font-size:32px\">→</div><div style=\"background:#1e293b;border:2px solid #3b82f6;border-radius:8px;padding:24px;text-align:center;width:160px\"><p style=\"font-size:14px;color:#94a3b8;margin:0\">Edge</p><p style=\"font-size:18px;font-weight:bold;margin:8px 0 0\">CDN Cache</p></div><div style=\"color:#64748b;font-size:32px\">→</div><div style=\"background:#1e293b;border:2px solid #334155;border-radius:8px;padding:24px;text-align:center;width:160px\"><p style=\"font-size:14px;color:#94a3b8;margin:0\">API</p><p style=\"font-size:18px;font-weight:bold;margin:8px 0 0\">Node.js</p></div><div style=\"color:#64748b;font-size:32px\">→</div><div style=\"background:#1e293b;border:2px solid #334155;border-radius:8px;padding:24px;text-align:center;width:160px\"><p style=\"font-size:14px;color:#94a3b8;margin:0\">Database</p><p style=\"font-size:18px;font-weight:bold;margin:8px 0 0\">PostgreSQL</p></div></div></div>"
 }'
 
-# Generate benchmark chart
+# 生成基准测试图表
 infsh app run infsh/python-executor --input '{
   "code": "import matplotlib.pyplot as plt\nimport matplotlib\nmatplotlib.use(\"Agg\")\n\nfig, ax = plt.subplots(figsize=(12, 6))\nfig.patch.set_facecolor(\"#0f172a\")\nax.set_facecolor(\"#0f172a\")\n\ntools = [\"Express\", \"Fastify\", \"Hono\", \"Elysia\"]\nrps = [15000, 45000, 62000, 78000]\ncolors = [\"#64748b\", \"#64748b\", \"#3b82f6\", \"#64748b\"]\n\nax.barh(tools, rps, color=colors, height=0.5)\nfor i, v in enumerate(rps):\n    ax.text(v + 1000, i, f\"{v:,} req/s\", va=\"center\", color=\"white\", fontsize=14)\n\nax.set_xlabel(\"Requests per second\", color=\"white\", fontsize=14)\nax.set_title(\"HTTP Framework Benchmark (Hello World)\", color=\"white\", fontsize=18, fontweight=\"bold\")\nax.tick_params(colors=\"white\", labelsize=12)\nax.spines[\"top\"].set_visible(False)\nax.spines[\"right\"].set_visible(False)\nax.spines[\"bottom\"].set_color(\"#334155\")\nax.spines[\"left\"].set_color(\"#334155\")\nplt.tight_layout()\nplt.savefig(\"benchmark.png\", dpi=150, facecolor=\"#0f172a\")\nprint(\"Saved\")"
 }'
 ```
 
-## Distribution
+## 内容分发
 
-### Where Developers Read
+### 开发者常用阅读平台
 
-| Platform | Format | How to Post |
-|----------|--------|-------------|
-| Your blog | Full article | Primary — own your content |
-| Dev.to | Cross-post (canonical URL back to yours) | Markdown import |
-| Hashnode | Cross-post (canonical URL) | Markdown import |
-| Hacker News | Link submission | Show HN for projects, tell HN for stories |
-| Reddit (r/programming, r/webdev, etc.) | Link or discussion | Follow subreddit rules |
-| Twitter/X | Thread summary + link | See twitter-thread-creation skill |
-| LinkedIn | Adapted version + link | See linkedin-content skill |
+| 平台 | 格式 | 发布方式 |
+|------|------|----------|
+| 个人博客 | 完整文章 | 首发——掌握内容所有权 |
+| Dev.to | 转载（canonical URL 指回你的博客） | Markdown 导入 |
+| Hashnode | 转载（canonical URL） | Markdown 导入 |
+| Hacker News | 链接提交 | 项目用 Show HN，故事用 Tell HN |
+| Reddit（r/programming、r/webdev 等） | 链接或讨论帖 | 遵守各版块规则 |
+| Twitter/X | 帖子摘要 + 链接 | 参见 twitter-thread-creation 技能 |
+| LinkedIn | 改编版本 + 链接 | 参见 linkedin-content 技能 |
 
 ```bash
-# Cross-post thread to X
+# 同步发帖到 X
 infsh app run x/post-create --input '{
   "text": "New blog post: How We Reduced API Latency by 90%\n\nThe short version:\n→ Moved computation to edge\n→ Aggressive cache-control headers\n→ Eliminated N+1 queries\n\np99 went from 800ms to 90ms.\n\nFull deep dive with code: [link]"
 }'
 ```
 
-## Common Mistakes
+## 常见错误
 
-| Mistake | Problem | Fix |
-|---------|---------|-----|
-| No TL;DR | Busy devs leave before getting the point | 2-3 sentence summary at the top |
-| Broken code examples | Destroys all credibility | Test every code block before publishing |
-| No version pinning | Code breaks in 6 months | "Works with Node 20, React 18.2" |
-| "Simply do X" | Dismissive, condescending | Remove "simply", "just", "easily" |
-| No diagrams for architecture | Walls of text describing systems | One diagram > 500 words of description |
-| Marketing tone | Developers instantly disengage | Direct, technical, honest |
-| No trade-offs section | Reads as biased marketing | Always discuss downsides |
-| Giant introduction before content | Readers bounce | Get to the point in 2-3 paragraphs |
-| Unpinned dependencies | Tutorial breaks for future readers | Pin versions, note date written |
-| No "Further Reading" | Dead end, no context | 3-5 links to deepen understanding |
+| 错误 | 问题 | 解决方法 |
+|------|------|----------|
+| 没有 TL;DR | 忙碌的开发者在获取要点之前就离开了 | 在顶部放 2-3 句摘要 |
+| 代码示例有 bug | 彻底摧毁可信度 | 发布前测试每个代码块 |
+| 没有锁定版本 | 代码 6 个月后就跑不通了 | "适用于 Node 20、React 18.2" |
+| "只需简单地做 X" | 居高临下，令人不快 | 删除"简单"、"只需"、"轻松" |
+| 架构文章没有图表 | 大段文字描述系统结构 | 一张图 > 500 字的描述 |
+| 营销腔调 | 开发者立刻失去兴趣 | 直接、技术化、诚实 |
+| 没有权衡取舍部分 | 读起来像有偏见的营销文 | 始终讨论不足之处 |
+| 正文前有大量铺垫 | 读者直接跳出 | 2-3 段内切入正题 |
+| 依赖版本未锁定 | 教程对后来的读者失效 | 锁定版本，注明写作日期 |
+| 没有"延伸阅读" | 到此结束，没有后续 | 3-5 个链接加深理解 |
 
-## Related Skills
+## 相关技能
 
 ```bash
 npx skills add inference-sh/skills@seo-content-brief
@@ -293,5 +293,5 @@ npx skills add inference-sh/skills@content-repurposing
 npx skills add inference-sh/skills@og-image-design
 ```
 
-Browse all apps: `infsh app list`
+浏览所有应用：`infsh app list`
 
