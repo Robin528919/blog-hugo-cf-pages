@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" font-family="system-ui,-apple-system,sans-serif">
+  <rect width="1000" height="520" fill="#0f172a"/>
+
+  <!-- Title -->
+  <text x="500" y="40" fill="#ffffff" font-size="22" font-weight="700" text-anchor="middle">7 大痛点 × 小龙虾解法一览</text>
+
+  <!-- Grid of 7 pain points -->
+  <!-- Row 1 -->
+  <g transform="translate(40, 70)">
+    <rect x="0" y="0" width="290" height="120" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <rect x="0" y="0" width="290" height="4" rx="2" fill="#ef4444"/>
+    <text x="20" y="35" fill="#ef4444" font-size="14" font-weight="700">01 沟通黑洞</text>
+    <text x="20" y="60" fill="#64748b" font-size="13">反复对齐、反复返工</text>
+    <line x1="20" y1="75" x2="270" y2="75" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="98" fill="#22c55e" font-size="14" font-weight="600">→ AI 按规则执行，零沟通</text>
+  </g>
+
+  <g transform="translate(355, 70)">
+    <rect x="0" y="0" width="290" height="120" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <rect x="0" y="0" width="290" height="4" rx="2" fill="#f97316"/>
+    <text x="20" y="35" fill="#f97316" font-size="14" font-weight="700">02 员工出错</text>
+    <text x="20" y="60" fill="#64748b" font-size="13">违禁词漏查、图片传错</text>
+    <line x1="20" y1="75" x2="270" y2="75" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="98" fill="#22c55e" font-size="14" font-weight="600">→ 自动检查链，错误率≈0</text>
+  </g>
+
+  <g transform="translate(670, 70)">
+    <rect x="0" y="0" width="290" height="120" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <rect x="0" y="0" width="290" height="4" rx="2" fill="#eab308"/>
+    <text x="20" y="35" fill="#eab308" font-size="14" font-weight="700">03 效率低下</text>
+    <text x="20" y="60" fill="#64748b" font-size="13">3人忙一天才上100品</text>
+    <line x1="20" y1="75" x2="270" y2="75" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="98" fill="#22c55e" font-size="14" font-weight="600">→ 100 SKU / 18 分钟</text>
+  </g>
+
+  <!-- Row 2 -->
+  <g transform="translate(40, 210)">
+    <rect x="0" y="0" width="290" height="120" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <rect x="0" y="0" width="290" height="4" rx="2" fill="#3b82f6"/>
+    <text x="20" y="35" fill="#3b82f6" font-size="14" font-weight="700">04 人力成本高</text>
+    <text x="20" y="60" fill="#64748b" font-size="13">1运营+2美工=20-32万/年</text>
+    <line x1="20" y1="75" x2="270" y2="75" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="98" fill="#22c55e" font-size="14" font-weight="600">→ 1运营+AI，年省20万+</text>
+  </g>
+
+  <g transform="translate(355, 210)">
+    <rect x="0" y="0" width="290" height="120" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <rect x="0" y="0" width="290" height="4" rx="2" fill="#8b5cf6"/>
+    <text x="20" y="35" fill="#8b5cf6" font-size="14" font-weight="700">05 竞争对手抢先</text>
+    <text x="20" y="60" fill="#64748b" font-size="13">别人在卖了，你还在上架</text>
+    <line x1="20" y1="75" x2="270" y2="75" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="98" fill="#22c55e" font-size="14" font-weight="600">→ 上新从"天级"到"分钟级"</text>
+  </g>
+
+  <g transform="translate(670, 210)">
+    <rect x="0" y="0" width="290" height="120" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <rect x="0" y="0" width="290" height="4" rx="2" fill="#ec4899"/>
+    <text x="20" y="35" fill="#ec4899" font-size="14" font-weight="700">06 平台罚款</text>
+    <text x="20" y="60" fill="#64748b" font-size="13">违禁词漏查→下架→罚款</text>
+    <line x1="20" y1="75" x2="270" y2="75" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="98" fill="#22c55e" font-size="14" font-weight="600">→ 违禁词库实时更新，自动拦截</text>
+  </g>
+
+  <!-- Row 3: centered -->
+  <g transform="translate(355, 350)">
+    <rect x="0" y="0" width="290" height="120" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <rect x="0" y="0" width="290" height="4" rx="2" fill="#06b6d4"/>
+    <text x="20" y="35" fill="#06b6d4" font-size="14" font-weight="700">07 决策风险</text>
+    <text x="20" y="60" fill="#64748b" font-size="13">怕踩坑、怕打水漂</text>
+    <line x1="20" y1="75" x2="270" y2="75" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="98" fill="#22c55e" font-size="14" font-weight="600">→ 免费试7天，无效退款</text>
+  </g>
+
+  <!-- Bottom tagline -->
+  <text x="500" y="505" fill="#475569" font-size="14" text-anchor="middle">OpenClaw · 用 AI 切断电商上架的恶性循环</text>
+</svg>

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" font-family="system-ui,-apple-system,sans-serif">
+  <rect width="1000" height="480" fill="#0f172a"/>
+
+  <!-- Title -->
+  <text x="500" y="40" fill="#ffffff" font-size="22" font-weight="700" text-anchor="middle">单条上架链路年人力成本对比</text>
+
+  <!-- Left: Traditional -->
+  <g transform="translate(100, 80)">
+    <text x="150" y="25" fill="#ef4444" font-size="18" font-weight="600" text-anchor="middle">传统模式</text>
+
+    <!-- Person icons with costs -->
+    <g transform="translate(0, 50)">
+      <!-- 运营 -->
+      <rect x="0" y="0" width="300" height="70" rx="10" fill="#1e293b" stroke="#ef4444" stroke-width="1.5"/>
+      <circle cx="40" cy="35" r="20" fill="#334155"/>
+      <text x="40" y="40" fill="#94a3b8" font-size="22" text-anchor="middle">👤</text>
+      <text x="80" y="28" fill="#ffffff" font-size="16" font-weight="600">运营 × 1</text>
+      <text x="80" y="50" fill="#ef4444" font-size="15" font-weight="700">8-12 万/年</text>
+    </g>
+
+    <g transform="translate(0, 135)">
+      <!-- 美工1 -->
+      <rect x="0" y="0" width="300" height="70" rx="10" fill="#1e293b" stroke="#f97316" stroke-width="1.5"/>
+      <circle cx="40" cy="35" r="20" fill="#334155"/>
+      <text x="40" y="40" fill="#94a3b8" font-size="22" text-anchor="middle">🎨</text>
+      <text x="80" y="28" fill="#ffffff" font-size="16" font-weight="600">PS 美工 × 1</text>
+      <text x="80" y="50" fill="#f97316" font-size="15" font-weight="700">6-10 万/年</text>
+    </g>
+
+    <g transform="translate(0, 220)">
+      <!-- 美工2 -->
+      <rect x="0" y="0" width="300" height="70" rx="10" fill="#1e293b" stroke="#f97316" stroke-width="1.5"/>
+      <circle cx="40" cy="35" r="20" fill="#334155"/>
+      <text x="40" y="40" fill="#94a3b8" font-size="22" text-anchor="middle">🎨</text>
+      <text x="80" y="28" fill="#ffffff" font-size="16" font-weight="600">PS 美工 × 1</text>
+      <text x="80" y="50" fill="#f97316" font-size="15" font-weight="700">6-10 万/年</text>
+    </g>
+
+    <!-- Total -->
+    <rect x="0" y="310" width="300" height="55" rx="10" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+    <text x="150" y="335" fill="#ef4444" font-size="14" text-anchor="middle">合计</text>
+    <text x="150" y="355" fill="#ef4444" font-size="24" font-weight="800" text-anchor="middle">20-32 万/年</text>
+  </g>
+
+  <!-- Arrow -->
+  <g transform="translate(480, 250)">
+    <text x="20" y="5" fill="#475569" font-size="40">→</text>
+  </g>
+
+  <!-- Right: OpenClaw -->
+  <g transform="translate(570, 80)">
+    <text x="175" y="25" fill="#22c55e" font-size="18" font-weight="600" text-anchor="middle">🦞 小龙虾模式</text>
+
+    <!-- Person + AI -->
+    <g transform="translate(0, 50)">
+      <rect x="0" y="0" width="350" height="70" rx="10" fill="#1e293b" stroke="#22c55e" stroke-width="1.5"/>
+      <circle cx="40" cy="35" r="20" fill="#334155"/>
+      <text x="40" y="40" fill="#94a3b8" font-size="22" text-anchor="middle">👤</text>
+      <text x="80" y="28" fill="#ffffff" font-size="16" font-weight="600">运营 × 1（审核为主）</text>
+      <text x="80" y="50" fill="#22c55e" font-size="15" font-weight="700">8-12 万/年</text>
+    </g>
+
+    <g transform="translate(0, 135)">
+      <rect x="0" y="0" width="350" height="70" rx="10" fill="#022c22" stroke="#22c55e" stroke-width="1.5"/>
+      <circle cx="40" cy="35" r="20" fill="#134e3e"/>
+      <text x="40" y="40" fill="#22c55e" font-size="22" text-anchor="middle">🦞</text>
+      <text x="80" y="28" fill="#22c55e" font-size="16" font-weight="600">OpenClaw AI</text>
+      <text x="80" y="50" fill="#22c55e" font-size="15" font-weight="700">替代 2 美工 + 大部分运营工作</text>
+    </g>
+
+    <!-- Savings -->
+    <g transform="translate(0, 235)">
+      <rect x="0" y="0" width="350" height="50" rx="8" fill="none" stroke="#334155" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="175" y="18" fill="#475569" font-size="13" text-anchor="middle" text-decoration="line-through">PS 美工 × 2  = 12-20 万/年</text>
+      <text x="175" y="38" fill="#22c55e" font-size="14" font-weight="600" text-anchor="middle">已被 AI 替代</text>
+    </g>
+
+    <!-- Total -->
+    <rect x="0" y="310" width="350" height="55" rx="10" fill="#022c22" stroke="#22c55e" stroke-width="2"/>
+    <text x="175" y="335" fill="#22c55e" font-size="14" text-anchor="middle">合计</text>
+    <text x="175" y="355" fill="#22c55e" font-size="24" font-weight="800" text-anchor="middle">年省 20 万+</text>
+  </g>
+</svg>

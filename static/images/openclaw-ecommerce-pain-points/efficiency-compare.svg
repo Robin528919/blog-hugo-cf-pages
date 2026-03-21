@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" font-family="system-ui,-apple-system,sans-serif">
+  <rect width="1000" height="500" fill="#0f172a"/>
+
+  <!-- Title -->
+  <text x="500" y="45" fill="#ffffff" font-size="22" font-weight="700" text-anchor="middle">人工 vs 小龙虾：效率对比</text>
+
+  <!-- Left: Manual process -->
+  <g transform="translate(50, 80)">
+    <text x="200" y="25" fill="#94a3b8" font-size="18" font-weight="600" text-anchor="middle">传统人工流程（串行）</text>
+
+    <!-- Timeline bars -->
+    <g transform="translate(0, 50)">
+      <text x="0" y="18" fill="#64748b" font-size="13">商品 A</text>
+      <rect x="70" y="2" width="330" height="24" rx="4" fill="#334155"/>
+      <rect x="70" y="2" width="55" height="24" rx="4" fill="#ef4444" opacity="0.8"/>
+      <rect x="125" y="2" width="55" height="24" rx="4" fill="#f97316" opacity="0.8"/>
+      <rect x="180" y="2" width="55" height="24" rx="4" fill="#eab308" opacity="0.8"/>
+      <rect x="235" y="2" width="55" height="24" rx="4" fill="#3b82f6" opacity="0.8"/>
+      <rect x="290" y="2" width="55" height="24" rx="4" fill="#8b5cf6" opacity="0.8"/>
+      <rect x="345" y="2" width="55" height="24" rx="4" fill="#22c55e" opacity="0.8"/>
+    </g>
+
+    <g transform="translate(0, 85)">
+      <text x="0" y="18" fill="#64748b" font-size="13">商品 B</text>
+      <rect x="70" y="2" width="330" height="24" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1" stroke-dasharray="4,2"/>
+      <text x="235" y="19" fill="#475569" font-size="12" text-anchor="middle">等 A 做完...</text>
+    </g>
+
+    <g transform="translate(0, 120)">
+      <text x="0" y="18" fill="#64748b" font-size="13">商品 C</text>
+      <rect x="70" y="2" width="330" height="24" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1" stroke-dasharray="4,2"/>
+      <text x="235" y="19" fill="#475569" font-size="12" text-anchor="middle">等 B 做完...</text>
+    </g>
+
+    <!-- Legend -->
+    <g transform="translate(70, 170)">
+      <rect x="0" y="0" width="16" height="12" rx="2" fill="#ef4444" opacity="0.8"/>
+      <text x="22" y="11" fill="#64748b" font-size="11">写标题</text>
+      <rect x="70" y="0" width="16" height="12" rx="2" fill="#f97316" opacity="0.8"/>
+      <text x="92" y="11" fill="#64748b" font-size="11">修图</text>
+      <rect x="130" y="0" width="16" height="12" rx="2" fill="#eab308" opacity="0.8"/>
+      <text x="152" y="11" fill="#64748b" font-size="11">查违禁词</text>
+      <rect x="220" y="0" width="16" height="12" rx="2" fill="#3b82f6" opacity="0.8"/>
+      <text x="242" y="11" fill="#64748b" font-size="11">填属性</text>
+      <rect x="290" y="0" width="16" height="12" rx="2" fill="#22c55e" opacity="0.8"/>
+      <text x="312" y="11" fill="#64748b" font-size="11">上架</text>
+    </g>
+
+    <!-- Time label -->
+    <rect x="100" y="200" width="240" height="44" rx="10" fill="#1e293b" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="220" y="218" fill="#ef4444" font-size="14" font-weight="600" text-anchor="middle">100 品 × 15 分钟/品</text>
+    <text x="220" y="236" fill="#ef4444" font-size="20" font-weight="800" text-anchor="middle">= 25 小时</text>
+  </g>
+
+  <!-- Divider -->
+  <line x1="500" y1="80" x2="500" y2="460" stroke="#334155" stroke-width="1" stroke-dasharray="6,4"/>
+  <text x="500" y="475" fill="#475569" font-size="14" font-weight="600" text-anchor="middle">VS</text>
+
+  <!-- Right: OpenClaw process -->
+  <g transform="translate(530, 80)">
+    <text x="220" y="25" fill="#22c55e" font-size="18" font-weight="600" text-anchor="middle">🦞 小龙虾流程（并行）</text>
+
+    <!-- Parallel bars -->
+    <g transform="translate(0, 50)">
+      <text x="0" y="18" fill="#64748b" font-size="13">商品 A</text>
+      <rect x="70" y="2" width="120" height="24" rx="4" fill="#22c55e" opacity="0.7"/>
+    </g>
+
+    <g transform="translate(0, 85)">
+      <text x="0" y="18" fill="#64748b" font-size="13">商品 B</text>
+      <rect x="70" y="2" width="120" height="24" rx="4" fill="#22c55e" opacity="0.7"/>
+    </g>
+
+    <g transform="translate(0, 120)">
+      <text x="0" y="18" fill="#64748b" font-size="13">商品 C</text>
+      <rect x="70" y="2" width="120" height="24" rx="4" fill="#22c55e" opacity="0.7"/>
+    </g>
+
+    <g transform="translate(0, 155)">
+      <text x="0" y="18" fill="#64748b" font-size="13">...</text>
+      <rect x="70" y="2" width="120" height="24" rx="4" fill="#22c55e" opacity="0.5"/>
+    </g>
+
+    <g transform="translate(0, 190)">
+      <text x="0" y="18" fill="#64748b" font-size="13">商品 Z</text>
+      <rect x="70" y="2" width="120" height="24" rx="4" fill="#22c55e" opacity="0.7"/>
+    </g>
+
+    <!-- Batch upload arrow -->
+    <path d="M200 80 L240 130" stroke="#22c55e" stroke-width="1.5" opacity="0.5"/>
+    <path d="M200 115 L240 130" stroke="#22c55e" stroke-width="1.5" opacity="0.5"/>
+    <path d="M200 150 L240 130" stroke="#22c55e" stroke-width="1.5" opacity="0.5"/>
+    <path d="M200 185 L240 130" stroke="#22c55e" stroke-width="1.5" opacity="0.5"/>
+    <path d="M200 218 L240 130" stroke="#22c55e" stroke-width="1.5" opacity="0.5"/>
+
+    <g transform="translate(250, 100)">
+      <rect x="0" y="0" width="140" height="60" rx="10" fill="#022c22" stroke="#22c55e" stroke-width="2"/>
+      <text x="70" y="25" fill="#22c55e" font-size="14" font-weight="600" text-anchor="middle">批量上架</text>
+      <text x="70" y="45" fill="#22c55e" font-size="12" text-anchor="middle" opacity="0.7">同时处理</text>
+    </g>
+
+    <!-- Time label -->
+    <rect x="100" y="250" width="240" height="44" rx="10" fill="#022c22" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="220" y="268" fill="#22c55e" font-size="14" font-weight="600" text-anchor="middle">100 品 并行处理</text>
+    <text x="220" y="286" fill="#22c55e" font-size="20" font-weight="800" text-anchor="middle">≈ 18 分钟</text>
+  </g>
+
+  <!-- Bottom comparison -->
+  <g transform="translate(50, 400)">
+    <rect x="0" y="0" width="900" height="60" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="450" y="25" fill="#ffffff" font-size="16" font-weight="700" text-anchor="middle">效率提升</text>
+    <text x="450" y="48" fill="#f97316" font-size="22" font-weight="800" text-anchor="middle">83× 倍速 · 25 小时 → 18 分钟 · 人力从 3 人降到 1 人</text>
+  </g>
+</svg>

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" font-family="system-ui,-apple-system,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#f97316"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Decorative claw marks -->
+  <g opacity="0.06">
+    <path d="M900 50 Q950 200 880 350" stroke="#f97316" stroke-width="40" fill="none" stroke-linecap="round"/>
+    <path d="M960 30 Q1010 180 940 330" stroke="#f97316" stroke-width="40" fill="none" stroke-linecap="round"/>
+    <path d="M1020 60 Q1070 210 1000 360" stroke="#f97316" stroke-width="40" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Tag -->
+  <rect x="60" y="120" width="160" height="36" rx="18" fill="url(#accent)" opacity="0.15"/>
+  <text x="140" y="144" fill="#f97316" font-size="16" font-weight="600" text-anchor="middle">电商 × AI 自动化</text>
+
+  <!-- Title -->
+  <text x="60" y="210" fill="#ffffff" font-size="52" font-weight="800" letter-spacing="-1">
+    <tspan x="60" dy="0">电商上架 7 大痛点</tspan>
+    <tspan x="60" dy="70">我用一只小龙虾全解决了</tspan>
+  </text>
+
+  <!-- Subtitle -->
+  <text x="60" y="330" fill="#94a3b8" font-size="22">沟通 · 出错 · 效率 · 成本 · 竞争 · 罚款 · 决策</text>
+
+  <!-- Stats row -->
+  <g transform="translate(60, 380)">
+    <rect width="200" height="90" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="100" y="38" fill="#f97316" font-size="32" font-weight="800" text-anchor="middle">18 分钟</text>
+    <text x="100" y="65" fill="#64748b" font-size="15" text-anchor="middle">100 SKU 上架</text>
+  </g>
+  <g transform="translate(280, 380)">
+    <rect width="200" height="90" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="100" y="38" fill="#22c55e" font-size="32" font-weight="800" text-anchor="middle">≈ 0%</text>
+    <text x="100" y="65" fill="#64748b" font-size="15" text-anchor="middle">违禁词漏检率</text>
+  </g>
+  <g transform="translate(500, 380)">
+    <rect width="200" height="90" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="100" y="38" fill="#3b82f6" font-size="32" font-weight="800" text-anchor="middle">20 万+</text>
+    <text x="100" y="65" fill="#64748b" font-size="15" text-anchor="middle">年省人力成本</text>
+  </g>
+
+  <!-- Lobster icon -->
+  <g transform="translate(850, 380)">
+    <circle cx="70" cy="45" r="55" fill="#1e293b" stroke="#f97316" stroke-width="2" opacity="0.8"/>
+    <text x="70" y="62" font-size="50" text-anchor="middle">🦞</text>
+  </g>
+
+  <!-- OpenClaw brand -->
+  <text x="60" y="540" fill="#475569" font-size="16">OpenClaw · AI 电商上架自动化</text>
+  <text x="60" y="570" fill="#334155" font-size="14">blog.es007.com</text>
+</svg>
