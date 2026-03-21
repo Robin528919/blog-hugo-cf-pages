@@ -89,6 +89,16 @@ tags: ["标签1", "标签2"]
 - 图片使用 WebP/AVIF 压缩
 - 减少请求数，关闭不必要脚本
 
+## 国内域名与双端部署规划（待实施）
+
+当前 `blog.es007.com` 在微信内被拦截（未备案域名）。后续采用混合方案：
+
+- **主站**：继续使用 Cloudflare Pages（`blog.es007.com`）
+- **国内站**：注册新域名（`.cn`）完成 ICP 备案，用于微信内分享
+- **部署方式**：Hugo 构建产物同时推送到 Cloudflare Pages 和国内对象存储（阿里云 OSS / 腾讯云 COS）+ 国内 CDN
+- **CI/CD**：GitHub Actions 一次构建，双端发布
+- **备案**：购买轻量服务器用于过审，完成后可释放
+
 ## 文章配图规范
 
 - 配图存放：`static/images/<文章slug>/`，引用路径 `/images/<文章slug>/xxx.svg`
