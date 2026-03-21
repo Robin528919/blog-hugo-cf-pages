@@ -32,6 +32,7 @@ hugo --gc --minify
 title: "文章标题"
 date: 2026-03-17T10:00:00+08:00
 draft: false
+description: "150字以内的文章摘要，用于 SEO meta description 和社交分享"
 tags: ["标签1", "标签2"]
 ---
 ```
@@ -55,7 +56,9 @@ tags: ["标签1", "标签2"]
 ## 模板架构
 
 - `layouts/_default/baseof.html` — 基础模板骨架，所有页面继承此模板
-- `layouts/partials/head.html` — `<head>` 公共内容（CSS 变量、亮暗模式初始化脚本）
+- `layouts/partials/head.html` — `<head>` 公共内容（CSS 变量、亮暗模式初始化脚本、SEO 标签）
+- `head.html` 已内置 SEO：meta description、canonical、Open Graph、Twitter Card、Article JSON-LD 结构化数据
+- JSON-LD 输出使用 `printf + safeHTML` 绕过 Hugo minifier 转义（直接用 `jsonify` 会被 minifier 二次转义为字符串）
 - `layouts/partials/header.html` — 顶部导航栏（含主题切换按钮）
 - `layouts/partials/footer.html` — 底部（含 `toggleTheme()` 脚本）
 - 页面模板通过 `{{ define "main" }}` 和 `{{ define "head" }}` 块扩展 baseof
@@ -74,6 +77,11 @@ tags: ["标签1", "标签2"]
 使用轻量前缀：`feat:`、`fix:`、`docs:`、`chore:`、`refactor:`、`perf:`
 
 **禁止在提交信息中出现任何 AI 标识**：包括 `Co-Authored-By: Claude`、`AI-generated`、`ChatGPT`、`Copilot` 等。
+
+## 站点配置（hugo.toml）
+
+- 已开启 sitemap.xml 和 RSS 输出（`[outputs]` 配置）
+- OG image 自动提取文章正文第一张图片，也可通过 front matter `image` 字段指定
 
 ## 中国大陆访问优化要点
 

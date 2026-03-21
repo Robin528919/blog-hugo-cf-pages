@@ -2,10 +2,11 @@
 title: "电商上架7大痛点，我用一只小龙虾全解决了"
 date: 2026-03-20T10:00:00+08:00
 draft: false
+description: "3个运营+2个美工一年烧30万只为上架？用OpenClaw（小龙虾）跑通整条链路：100 SKU 18分钟、违禁词零漏检、主图自动生成，年省20万+。"
 tags: ["AI", "OpenClaw", "电商", "自动化", "降本增效"]
 ---
 
-![电商上架7大痛点，我用一只小龙虾全解决了](/images/openclaw-ecommerce-pain-points/hero.svg)
+![OpenClaw小龙虾电商上架自动化：18分钟上架100SKU，年省20万人力成本](/images/openclaw-ecommerce-pain-points/hero.svg)
 
 3 个运营 + 2 个美工，一年烧 30 万，就为了把货上架。上架还出错，还被罚款，还跟不上竞争对手。
 
@@ -97,7 +98,7 @@ AI 不会"手滑"。
 
 小龙虾的上架流水线是并行的——不是一个品做完再做下一个，而是批量并发处理：
 
-![人工串行 vs 小龙虾并行效率对比](/images/openclaw-ecommerce-pain-points/efficiency-compare.svg)
+![效率对比图：人工串行25小时 vs 小龙虾并行18分钟完成100SKU上架](/images/openclaw-ecommerce-pain-points/efficiency-compare.svg)
 
 旺季不需要临时加人。季节性商品、热点商品，当天发现当天就能上架。
 
@@ -143,7 +144,7 @@ AI 不会"手滑"。
 
 美工不是不需要了，而是从"每张图都手工修"变成"审核 AI 生成的图，有问题再调"。工作量从 100% 降到 10%。
 
-![单条上架链路年人力成本对比](/images/openclaw-ecommerce-pain-points/cost-compare.svg)
+![成本对比图：传统3人团队年花费20-32万 vs 小龙虾模式1人+AI年省20万](/images/openclaw-ecommerce-pain-points/cost-compare.svg)
 
 **年省 20 万+**，这不是营销话术，是算术题。
 
@@ -215,7 +216,7 @@ AI 不会"手滑"。
 
 这 7 个痛点不是孤立的，它们互相喂养：
 
-![电商上架的恶性循环](/images/openclaw-ecommerce-pain-points/pain-cycle.svg)
+![电商上架恶性循环图：加人→沟通成本增加→出错→效率下降→继续加人](/images/openclaw-ecommerce-pain-points/pain-cycle.svg)
 
 传统的解法是"加人"，但加人只会让循环转得更快。
 
@@ -225,7 +226,7 @@ AI 不会"手滑"。
 
 ## 总结：一张图看完
 
-![7大痛点 × 小龙虾解法一览](/images/openclaw-ecommerce-pain-points/solution-overview.svg)
+![总览图：沟通、出错、效率、成本、竞争、罚款、决策7大痛点及OpenClaw对应解法](/images/openclaw-ecommerce-pain-points/solution-overview.svg)
 
 ### 详细对比
 

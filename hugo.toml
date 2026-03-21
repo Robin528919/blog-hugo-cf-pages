@@ -3,4 +3,11 @@ languageCode = "zh-cn"
 title = "E.S 博客"
 
 [outputs]
-home = ["HTML"]
+home = ["HTML", "RSS"]
+section = ["HTML", "RSS"]
+
+[sitemap]
+changefreq = "weekly"
+priority = 0.5
+filename = "sitemap.xml"
+
