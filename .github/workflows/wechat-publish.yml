@@ -38,6 +38,8 @@ jobs:
         env:
           WECHAT_APP_ID: ${{ secrets.WECHAT_APP_ID }}
           WECHAT_APP_SECRET: ${{ secrets.WECHAT_APP_SECRET }}
+          WECHAT_PROXY_URL: http://182.92.95.178/wechat-api
+          WECHAT_PROXY_KEY: ${{ secrets.WECHAT_PROXY_KEY }}
         run: |
           if [ "${{ inputs.publish_all }}" = "true" ]; then
             python scripts/wechat/publish.py --all --project-root .

@@ -34,8 +34,28 @@ log = logging.getLogger(__name__)
 
 # ─── 微信 API ───────────────────────────────────────────────
 
-WECHAT_API = "https://api.weixin.qq.com/cgi-bin"
+# 默认走服务器代理，本地调试可通过环境变量切回直连
+WECHAT_API = os.environ.get(
+    "WECHAT_PROXY_URL",
+    "http://182.92.95.178/wechat-api",
+)
 STATE_FILE = "wechat_published.json"
+
+# 代理验证 Header（直连微信时不需要）
+_proxy_key = os.environ.get("WECHAT_PROXY_KEY", "")
+PROXY_HEADERS = {"X-Proxy-Key": _proxy_key} if _proxy_key else {}
+
+
+def _api_get(url: str, **kwargs) -> requests.Response:
+    """带代理 Header 的 GET 请求"""
+    headers = {**PROXY_HEADERS, **kwargs.pop("headers", {})}
+    return requests.get(url, headers=headers, **kwargs)
+
+
+def _api_post(url: str, **kwargs) -> requests.Response:
+    """带代理 Header 的 POST 请求"""
+    headers = {**PROXY_HEADERS, **kwargs.pop("headers", {})}
+    return requests.post(url, headers=headers, **kwargs)
 
 
 def get_access_token(app_id: str, app_secret: str) -> str:
@@ -47,7 +67,7 @@ def get_access_token(app_id: str, app_secret: str) -> str:
         "secret": app_secret,
     }
     for attempt in range(1, 4):
-        resp = requests.get(url, params=params, timeout=10)
+        resp = _api_get(url, params=params, timeout=10)
         data = resp.json()
         if "access_token" in data:
             log.info("获取 access_token 成功")
@@ -63,7 +83,7 @@ def upload_image(token: str, img_path: str) -> dict:
     params = {"access_token": token, "type": "image"}
     with open(img_path, "rb") as f:
         files = {"media": (Path(img_path).name, f, "image/png")}
-        resp = requests.post(url, params=params, files=files, timeout=30)
+        resp = _api_post(url, params=params, files=files, timeout=30)
     data = resp.json()
     if "media_id" not in data:
         raise RuntimeError(f"上传图片失败 [{img_path}]: {data}")
@@ -76,7 +96,7 @@ def create_draft(token: str, article: dict) -> str:
     url = f"{WECHAT_API}/draft/add"
     params = {"access_token": token}
     payload = {"articles": [article]}
-    resp = requests.post(url, params=params, json=payload, timeout=30)
+    resp = _api_post(url, params=params, json=payload, timeout=30)
     data = resp.json()
     if "media_id" not in data:
         raise RuntimeError(f"创建草稿失败: {data}")
