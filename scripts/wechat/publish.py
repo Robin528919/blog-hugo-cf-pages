@@ -435,7 +435,7 @@ def publish_post(
     original_url = f"https://blog.es007.com/posts/{slug}/"
     article = {
         "title": title,
-        "digest": description[:54] if description else "",
+        "digest": description[:30] if description else "",
         "content": wechat_html,
         "content_source_url": original_url,
         "need_open_comment": 0,
