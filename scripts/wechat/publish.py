@@ -403,9 +403,9 @@ def publish_post(
         return False
 
     title = post.get("title", slug)
-    # 微信草稿标题限制（实测约 16 个中文字符安全）
-    if len(title) > 16:
-        title = title[:15] + "…"
+    # 微信个人订阅号标题限制严格（实测约 10 个中文字符安全）
+    if len(title) > 10:
+        title = title[:9] + "…"
         log.info("标题截断为: %s (%d字符)", title, len(title))
     description = post.get("description", "")
     body = post.content
@@ -435,8 +435,7 @@ def publish_post(
     original_url = f"https://blog.es007.com/posts/{slug}/"
     article = {
         "title": title,
-        "author": "亿思007小龙虾",
-        "digest": description[:120] if description else "",
+        "digest": description[:54] if description else "",
         "content": wechat_html,
         "content_source_url": original_url,
         "need_open_comment": 0,
