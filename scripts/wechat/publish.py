@@ -403,13 +403,10 @@ def publish_post(
         return False
 
     title = post.get("title", slug)
-    # 微信草稿标题限制 64 字节（中文 UTF-8 每字 3 字节，约 21 字）
-    title_bytes = len(title.encode("utf-8"))
-    if title_bytes > 64:
-        while len(title.encode("utf-8")) > 58:
-            title = title[:-1]
-        title = title + "…"
-        log.info("标题截断为(%d字节): %s", len(title.encode("utf-8")), title)
+    # 微信草稿标题限制（实测约 16 个中文字符安全）
+    if len(title) > 16:
+        title = title[:15] + "…"
+        log.info("标题截断为: %s (%d字符)", title, len(title))
     description = post.get("description", "")
     body = post.content
 
