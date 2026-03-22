@@ -315,6 +315,70 @@ def process_images(
     return md_content, cover_media_id
 
 
+# 缓存默认封面 media_id，避免重复上传
+_placeholder_media_id: str | None = None
+
+
+def _get_placeholder_cover(project_root: str, token: str) -> str | None:
+    """生成并上传一张默认封面图（900x383 品牌色），缓存 media_id"""
+    global _placeholder_media_id
+    if _placeholder_media_id:
+        return _placeholder_media_id
+    try:
+        from PIL import Image, ImageDraw, ImageFont
+    except ImportError:
+        # 无 Pillow 时用纯 PNG 生成（1x1 像素）
+        log.warning("Pillow 未安装，使用最小占位图")
+        import struct
+        import zlib
+
+        # 生成 900x383 纯色 PNG
+        width, height = 900, 383
+        raw = b""
+        for _ in range(height):
+            raw += b"\x00" + b"\x22\xc5\x5e" * width  # 品牌绿
+        png_data = b"\x89PNG\r\n\x1a\n"
+        # IHDR
+        ihdr = struct.pack(">IIBBBBB", width, height, 8, 2, 0, 0, 0)
+        png_data += _png_chunk(b"IHDR", ihdr)
+        # IDAT
+        compressed = zlib.compress(raw)
+        png_data += _png_chunk(b"IDAT", compressed)
+        # IEND
+        png_data += _png_chunk(b"IEND", b"")
+
+        with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as f:
+            f.write(png_data)
+            tmp_path = f.name
+        try:
+            result = upload_image(token, tmp_path)
+            _placeholder_media_id = result["media_id"]
+            return _placeholder_media_id
+        finally:
+            os.unlink(tmp_path)
+
+    # 使用 Pillow 生成封面
+    img = Image.new("RGB", (900, 383), color=(34, 197, 94))
+    with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as f:
+        img.save(f, "PNG")
+        tmp_path = f.name
+    try:
+        result = upload_image(token, tmp_path)
+        _placeholder_media_id = result["media_id"]
+        return _placeholder_media_id
+    finally:
+        os.unlink(tmp_path)
+
+
+def _png_chunk(chunk_type: bytes, data: bytes) -> bytes:
+    """构建 PNG chunk"""
+    import struct
+    import zlib
+
+    chunk = chunk_type + data
+    return struct.pack(">I", len(data)) + chunk + struct.pack(">I", zlib.crc32(chunk) & 0xFFFFFFFF)
+
+
 # ─── 主流程 ─────────────────────────────────────────────────
 
 
@@ -339,6 +403,13 @@ def publish_post(
         return False
 
     title = post.get("title", slug)
+    # 微信标题限制 64 字节（中文约 21 个字），超长则截断
+    if len(title.encode("utf-8")) > 64:
+        truncated = title
+        while len(truncated.encode("utf-8")) > 61:
+            truncated = truncated[:-1]
+        title = truncated + "..."
+        log.info("标题超长，已截断为: %s", title)
     description = post.get("description", "")
     body = post.content
 
@@ -374,6 +445,12 @@ def publish_post(
         "need_open_comment": 0,
         "only_fans_can_comment": 0,
     }
+    # 封面图：微信要求必须有 thumb_media_id
+    if not cover_media_id and not dry_run:
+        # 无图片文章：生成一张纯色占位封面
+        placeholder = _get_placeholder_cover(project_root, token)
+        if placeholder:
+            cover_media_id = placeholder
     if cover_media_id:
         article["thumb_media_id"] = cover_media_id
 
