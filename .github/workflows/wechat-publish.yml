@@ -49,8 +49,12 @@ jobs:
 
       - name: 提交发布状态
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add scripts/wechat/wechat_published.json
-          git diff --cached --quiet || git commit -m "chore: 更新微信发布状态"
-          git push
+          if [ -f scripts/wechat/wechat_published.json ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add scripts/wechat/wechat_published.json
+            git diff --cached --quiet || git commit -m "chore: 更新微信发布状态"
+            git push
+          else
+            echo "没有发布状态文件，跳过提交"
+          fi
