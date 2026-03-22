@@ -1,0 +1,54 @@
+name: 发布文章到微信公众号
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/posts/**'
+  workflow_dispatch:
+    inputs:
+      publish_all:
+        description: '扫描并发布所有未发布文章'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  wechat-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 安装系统依赖（cairosvg）
+        run: sudo apt-get update && sudo apt-get install -y libcairo2-dev libffi-dev
+
+      - name: 安装 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 安装 Python 依赖
+        run: pip install -r scripts/wechat/requirements.txt
+
+      - name: 发布到微信草稿箱
+        env:
+          WECHAT_APP_ID: ${{ secrets.WECHAT_APP_ID }}
+          WECHAT_APP_SECRET: ${{ secrets.WECHAT_APP_SECRET }}
+        run: |
+          if [ "${{ inputs.publish_all }}" = "true" ]; then
+            python scripts/wechat/publish.py --all --project-root .
+          else
+            python scripts/wechat/publish.py --base-ref HEAD~1 --project-root .
+          fi
+
+      - name: 提交发布状态
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add scripts/wechat/wechat_published.json
+          git diff --cached --quiet || git commit -m "chore: 更新微信发布状态"
+          git push

@@ -1,0 +1,6 @@
+markdown==3.7
+Pygments==2.19
+beautifulsoup4==4.13
+cairosvg==2.7
+requests==2.32
+python-frontmatter==1.1

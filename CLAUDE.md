@@ -19,6 +19,10 @@ hugo server -D
 
 # 生产构建
 hugo --gc --minify
+
+# 微信公众号发布 dry-run 测试（不调用 API，生成预览 HTML）
+pip install -r scripts/wechat/requirements.txt
+python scripts/wechat/publish.py --all --dry-run --project-root .
 ```
 
 > 部署：推送到 GitHub 即可，Cloudflare Pages 自动构建。手动部署备用：`wrangler pages deployment create ./public --project-name blog-hugo-cf-pages`
@@ -42,6 +46,7 @@ tags: ["标签1", "标签2"]
 
 ## 目录结构与约束
 
+- `scripts/wechat/` — 微信公众号自动发布脚本（Python），含 Markdown→微信HTML 转换、SVG→PNG、API 调用
 - `content/` — 博客文章与页面，slug 建议 `kebab-case`
 - `content/posts/` — 博客文章目录，文章发布后 URL 为 `/posts/<文件名去.md>/`
 - `layouts/` — Hugo 模板，基于 baseof.html + block 继承体系
@@ -68,6 +73,9 @@ tags: ["标签1", "标签2"]
 ## 分支与部署
 
 - `main` → 生产环境（推送后 Cloudflare Pages 自动构建部署）
+- `main` → 推送 `content/posts/` 变更时自动触发微信公众号草稿创建（`.github/workflows/wechat-publish.yml`）
+- 微信发布需要 GitHub Secrets：`WECHAT_APP_ID`、`WECHAT_APP_SECRET`
+- 发布状态记录在 `scripts/wechat/wechat_published.json`
 - `develop` → 日常开发分支（Preview 预览环境）
 - 工作流：在 `develop` 开发提交 → 完成后合并到 `main` → 推送部署
 - Hugo 版本通过 Cloudflare 环境变量 `HUGO_VERSION` 固定
