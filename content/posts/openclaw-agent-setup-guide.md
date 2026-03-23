@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "OpenClaw", "Agent", "智能体"]
 ---
 
+![OpenClaw对话与角色设置完整指南：SOUL.md配置、多智能体管理、全平台渠道接入](/images/openclaw-agent-setup-guide/hero.svg)
+
 基于 [OpenClaw 官方文档](https://docs.openclaw.ai/zh-CN) 整理，涵盖从身份定义到高级多智能体管理的全流程配置。
 
 ## 第一章：核心概念总览

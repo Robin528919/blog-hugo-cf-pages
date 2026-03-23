@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "OpenClaw", "跨境电商", "多Agent"]
 ---
 
+![用OpenClaw搭跨境电商团队：5个AI员工跑通全平台矩阵](/images/openclaw-cross-border-ecommerce-ai-team/hero.svg)
+
 我用Mac mini本地部署了OpenClaw，然后设计了一个多Agent Team：5个独立的AI数字员工，直接接管了跨境电商的选品调研、TikTok UGC视频生成、Reddit种草引流和亚马逊运营。
 
 以前一个团队干一周的活，现在喝杯咖啡的功夫，这5个Agent就自动在后台跑完了。

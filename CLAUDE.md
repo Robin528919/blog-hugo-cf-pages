@@ -74,7 +74,8 @@ tags: ["标签1", "标签2"]
 
 - `main` → 生产环境（推送后 Cloudflare Pages 自动构建部署）
 - `main` → 推送 `content/posts/` 变更时自动触发微信公众号草稿创建（`.github/workflows/wechat-publish.yml`）
-- 微信发布需要 GitHub Secrets：`WECHAT_APP_ID`、`WECHAT_APP_SECRET`
+- 微信 API 通过阿里云服务器（182.92.95.178）Nginx 反向代理中转，解决 GitHub Actions IP 白名单问题
+- 微信发布需要 GitHub Secrets：`WECHAT_APP_ID`、`WECHAT_APP_SECRET`、`WECHAT_PROXY_KEY`
 - 发布状态记录在 `scripts/wechat/wechat_published.json`
 - `develop` → 日常开发分支（Preview 预览环境）
 - 工作流：在 `develop` 开发提交 → 完成后合并到 `main` → 推送部署
@@ -113,3 +114,13 @@ tags: ["标签1", "标签2"]
 - 优先使用 SVG 格式（体积小、矢量清晰、加载快）
 - SVG 配图采用暗色主题（`#0f172a` 背景），与博客风格一致
 - 技术文章建议至少包含：架构图/流程图 + 对比表/数据可视化
+- SVG 的 `font-family` 必须避免 macOS 专属字体（`system-ui`/`-apple-system`），CI 上 cairosvg 转 PNG 时会渲染为方块；publish.py 已自动替换为 `Noto Sans CJK SC`
+
+## 微信公众号发布注意事项（scripts/wechat/）
+
+- 个人订阅号标题限制约 10 个中文字符，超长自动截断
+- `author` 字段不可用（个人订阅号报 45110），已移除
+- `digest` 摘要限制约 30 字符
+- JSON 序列化必须 `ensure_ascii=False`，否则中文显示为 `\uXXXX` 转义
+- 微信不支持 SVG 图片，需转 PNG 后上传到微信素材库
+- 微信过滤外链，脚本自动转为脚注
