@@ -27,7 +27,10 @@ python scripts/wechat/publish.py --all --dry-run --project-root .
 
 > 部署：推送到 GitHub 即可，Cloudflare Pages 自动构建。手动部署备用：`wrangler pages deployment create ./public --project-name blog-hugo-cf-pages`
 
-**提交前必须**：成功运行 `hugo --gc --minify` 确认构建无误。
+**提交前必须**（按顺序执行）：
+1. `find static/images -name "*.svg" | while read svg; do png="${svg%.svg}.png"; if [ ! -f "$png" ] || [ "$svg" -nt "$png" ]; then rsvg-convert -w 900 "$svg" -o "$png"; fi; done` — SVG→PNG 预渲染（防止微信 emoji 乱码）
+2. `hugo --gc --minify` — 确认构建无误
+3. `git add` 时包含生成的 `.png` 文件
 
 ## 文章 Front Matter 格式
 
@@ -118,6 +121,9 @@ tags: ["标签1", "标签2"]
 
 ## 微信公众号发布注意事项（scripts/wechat/）
 
+- 增量模式（push 触发）：自动删除旧草稿并重建，确保内容更新
+- 全量模式（workflow_dispatch）：跳过已发布文章，仅处理新文章
+- 每篇文章必须有配图（`static/images/<slug>/hero.svg`），否则封面为纯色占位块
 - 个人订阅号标题限制约 10 个中文字符，超长自动截断
 - `author` 字段不可用（个人订阅号报 45110），已移除
 - `digest` 摘要限制约 30 字符
