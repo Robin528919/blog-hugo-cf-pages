@@ -96,7 +96,6 @@ def create_draft(token: str, article: dict) -> str:
     url = f"{WECHAT_API}/draft/add"
     params = {"access_token": token}
     payload = {"articles": [article]}
-    # 必须用 ensure_ascii=False，否则中文会变成 \uXXXX 转义序列
     body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
     resp = _api_post(
         url, params=params, data=body,
@@ -108,6 +107,40 @@ def create_draft(token: str, article: dict) -> str:
         raise RuntimeError(f"创建草稿失败: {data}")
     log.info("草稿创建成功，media_id: %s", data["media_id"])
     return data["media_id"]
+
+
+def update_draft(token: str, media_id: str, article: dict):
+    """更新已有草稿（覆盖第一篇文章）"""
+    url = f"{WECHAT_API}/draft/update"
+    params = {"access_token": token}
+    payload = {"media_id": media_id, "index": 0, "articles": article}
+    body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+    resp = _api_post(
+        url, params=params, data=body,
+        headers={"Content-Type": "application/json; charset=utf-8"},
+        timeout=30,
+    )
+    data = resp.json()
+    if data.get("errcode", 0) != 0:
+        raise RuntimeError(f"更新草稿失败: {data}")
+    log.info("草稿更新成功，media_id: %s", media_id)
+
+
+def delete_draft(token: str, media_id: str):
+    """删除草稿"""
+    url = f"{WECHAT_API}/draft/delete"
+    params = {"access_token": token}
+    body = json.dumps({"media_id": media_id}, ensure_ascii=False).encode("utf-8")
+    resp = _api_post(
+        url, params=params, data=body,
+        headers={"Content-Type": "application/json; charset=utf-8"},
+        timeout=30,
+    )
+    data = resp.json()
+    if data.get("errcode", 0) != 0:
+        log.warning("删除草稿失败: %s", data)
+    else:
+        log.info("已删除旧草稿: %s", media_id)
 
 
 # ─── 文章检测 ───────────────────────────────────────────────
@@ -403,8 +436,12 @@ def publish_post(
     token: str | None,
     state: dict,
     dry_run: bool = False,
+    force: bool = False,
 ) -> bool:
-    """发布单篇文章到微信草稿箱，返回是否成功"""
+    """发布单篇文章到微信草稿箱，返回是否成功
+
+    force=True 时即使已发布也会删除旧草稿并重新创建（用于文章内容更新）。
+    """
     slug = get_slug(filepath)
     log.info("─── 处理文章: %s ───", slug)
 
@@ -413,8 +450,8 @@ def publish_post(
     if post.get("draft", False):
         log.info("跳过草稿: %s", slug)
         return False
-    if slug in state:
-        log.info("跳过已发布: %s", slug)
+    if slug in state and not force:
+        log.info("跳过已发布: %s（使用 --force 强制更新）", slug)
         return False
 
     title = post.get("title", slug)
@@ -464,6 +501,12 @@ def publish_post(
             cover_media_id = placeholder
     if cover_media_id:
         article["thumb_media_id"] = cover_media_id
+
+    # 已有草稿则先删除旧的（微信 draft/update 不支持更新封面图）
+    if slug in state and "media_id" in state[slug]:
+        old_media_id = state[slug]["media_id"]
+        log.info("检测到已有草稿，删除旧版: %s", old_media_id)
+        delete_draft(token, old_media_id)
 
     media_id = create_draft(token, article)
 
@@ -517,11 +560,15 @@ def main():
             sys.exit(1)
         token = get_access_token(app_id, app_secret)
 
-    # 逐篇发布
+    # 逐篇发布（增量模式下强制更新变更文章，全量模式跳过已发布）
+    is_incremental = not args.all
     success_count = 0
     for filepath in post_files:
         try:
-            if publish_post(filepath, project_root, token, state, args.dry_run):
+            if publish_post(
+                filepath, project_root, token, state,
+                args.dry_run, force=is_incremental,
+            ):
                 success_count += 1
         except Exception as e:
             log.error("文章处理失败 [%s]: %s", filepath, e)
