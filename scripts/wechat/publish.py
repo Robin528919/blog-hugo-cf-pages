@@ -143,6 +143,45 @@ def delete_draft(token: str, media_id: str):
         log.info("已删除旧草稿: %s", media_id)
 
 
+def freepublish(token: str, media_id: str) -> str | None:
+    """发布草稿（自由发布），返回 publish_id"""
+    url = f"{WECHAT_API}/freepublish/submit"
+    params = {"access_token": token}
+    body = json.dumps({"media_id": media_id}, ensure_ascii=False).encode("utf-8")
+    resp = _api_post(
+        url, params=params, data=body,
+        headers={"Content-Type": "application/json; charset=utf-8"},
+        timeout=30,
+    )
+    data = resp.json()
+    if data.get("errcode", 0) != 0:
+        log.warning("自由发布失败: %s", data)
+        return None
+    publish_id = data.get("publish_id")
+    log.info("自由发布成功，publish_id: %s", publish_id)
+    return publish_id
+
+
+def declare_original(token: str, media_id: str):
+    """声明原创（通过 freepublish/markasoriginal）"""
+    url = f"{WECHAT_API}/freepublish/markasoriginal"
+    params = {"access_token": token}
+    body = json.dumps({
+        "media_id": media_id,
+        "index": 0,
+    }, ensure_ascii=False).encode("utf-8")
+    resp = _api_post(
+        url, params=params, data=body,
+        headers={"Content-Type": "application/json; charset=utf-8"},
+        timeout=30,
+    )
+    data = resp.json()
+    if data.get("errcode", 0) != 0:
+        log.warning("原创声明失败（个人订阅号可能无权限）: %s", data)
+    else:
+        log.info("原创声明成功")
+
+
 # ─── 文章检测 ───────────────────────────────────────────────
 
 
@@ -487,6 +526,7 @@ def publish_post(
     original_url = f"https://blog.es007.com/posts/{slug}/"
     article = {
         "title": title,
+        "author": "E.S",
         "digest": description[:30] if description else "",
         "content": wechat_html,
         "content_source_url": original_url,
@@ -510,10 +550,15 @@ def publish_post(
 
     media_id = create_draft(token, article)
 
+    # 尝试声明原创（个人订阅号可能无权限，失败不影响流程）
+    declare_original(token, media_id)
+
     # 更新状态
+    tags = post.get("tags", [])
     state[slug] = {
         "media_id": media_id,
         "title": title,
+        "tags": tags,
         "published_at": time.strftime("%Y-%m-%dT%H:%M:%S+08:00"),
     }
     log.info("文章 [%s] 草稿创建成功 ✓", title)
