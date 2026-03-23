@@ -252,13 +252,22 @@ def extract_images(md_content: str) -> list[str]:
 
 
 def convert_svg_to_png(svg_path: str, output_dir: str) -> str:
-    """SVG → PNG 转换"""
+    """SVG → PNG 转换（替换字体为 Noto Sans CJK SC 确保中文渲染）"""
     import cairosvg
+
+    # 读取 SVG 并替换 macOS 专属字体为 Linux 可用的中文字体
+    with open(svg_path, "r", encoding="utf-8") as f:
+        svg_content = f.read()
+    svg_content = re.sub(
+        r'font-family\s*[:=]\s*["\']?[^"\'>;]*(?:system-ui|-apple-system|BlinkMacSystemFont|PingFang|Microsoft YaHei|Helvetica Neue)[^"\'>;]*["\']?',
+        'font-family="Noto Sans CJK SC, Noto Sans SC, sans-serif"',
+        svg_content,
+    )
 
     png_name = Path(svg_path).stem + ".png"
     png_path = os.path.join(output_dir, png_name)
     cairosvg.svg2png(
-        url=svg_path,
+        bytestring=svg_content.encode("utf-8"),
         write_to=png_path,
         output_width=900,
         dpi=144,
