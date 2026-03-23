@@ -374,11 +374,17 @@ def process_images(
 
             # SVG 需要转 PNG
             if local_path.endswith(".svg"):
-                try:
-                    upload_path = convert_svg_to_png(local_path, tmp_dir)
-                except Exception as e:
-                    log.warning("SVG 转换失败 [%s]: %s", local_path, e)
-                    continue
+                # 优先使用本地预渲染的 PNG（由 /svg2png 技能生成）
+                prerendered = local_path.replace(".svg", ".png")
+                if os.path.exists(prerendered):
+                    upload_path = prerendered
+                    log.info("使用预渲染 PNG: %s", Path(prerendered).name)
+                else:
+                    try:
+                        upload_path = convert_svg_to_png(local_path, tmp_dir)
+                    except Exception as e:
+                        log.warning("SVG 转换失败 [%s]: %s", local_path, e)
+                        continue
             else:
                 upload_path = local_path
 
