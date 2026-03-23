@@ -96,7 +96,13 @@ def create_draft(token: str, article: dict) -> str:
     url = f"{WECHAT_API}/draft/add"
     params = {"access_token": token}
     payload = {"articles": [article]}
-    resp = _api_post(url, params=params, json=payload, timeout=30)
+    # 必须用 ensure_ascii=False，否则中文会变成 \uXXXX 转义序列
+    body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+    resp = _api_post(
+        url, params=params, data=body,
+        headers={"Content-Type": "application/json; charset=utf-8"},
+        timeout=30,
+    )
     data = resp.json()
     if "media_id" not in data:
         raise RuntimeError(f"创建草稿失败: {data}")
