@@ -23,8 +23,11 @@ jobs:
           fetch-depth: 2
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 安装系统依赖（cairosvg）
-        run: sudo apt-get update && sudo apt-get install -y libcairo2-dev libffi-dev
+      - name: 安装系统依赖（cairosvg + 中文字体）
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcairo2-dev libffi-dev fonts-noto-cjk
+          fc-cache -fv
 
       - name: 安装 Python
         uses: actions/setup-python@v5
