@@ -1,6 +1,6 @@
 ---
 title: "OpenClaw 3.22 重磅更新：插件换血、安全大修、GPT-5.4 上位"
-date: 2026-03-24T18:00:00+08:00
+date: 2026-03-24T16:00:00+08:00
 draft: false
 description: "OpenClaw 3.22 版本深度解读：插件系统彻底重构、十余项安全漏洞修复、GPT-5.4 默认上位、Matrix 渠道接入，一文看懂这次架构级大版本。"
 tags: ["AI", "OpenClaw", "智能体", "安全"]
