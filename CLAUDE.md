@@ -76,8 +76,9 @@ tags: ["标签1", "标签2"]
 ## 分支与部署
 
 - `main` → 生产环境（推送后 Cloudflare Pages 自动构建部署）
+- `main` → 推送后 GitHub Actions 自动构建并 rsync 部署到阿里云 ECS（`.github/workflows/deploy-china.yml`），服务国内站 `https://blog.es007.cn`
 - `main` → 推送 `content/posts/` 变更时自动触发微信公众号草稿创建（`.github/workflows/wechat-publish.yml`）
-- 微信 API 通过阿里云服务器（182.92.95.178）Nginx 反向代理中转，解决 GitHub Actions IP 白名单问题
+- 阿里云服务器（182.92.95.178）承担两个角色：国内站 Nginx 静态托管 + 微信 API 反向代理中转
 - 微信发布需要 GitHub Secrets：`WECHAT_APP_ID`、`WECHAT_APP_SECRET`、`WECHAT_PROXY_KEY`
 - 发布状态记录在 `scripts/wechat/wechat_published.json`
 - `develop` → 日常开发分支（Preview 预览环境）
@@ -101,15 +102,15 @@ tags: ["标签1", "标签2"]
 - 图片使用 WebP/AVIF 压缩
 - 减少请求数，关闭不必要脚本
 
-## 国内域名与双端部署规划（待实施）
+## 国内站双端部署（已实施）
 
-当前 `blog.es007.com` 在微信内被拦截（未备案域名）。后续采用混合方案：
+`blog.es007.com` 在微信内被拦截（未备案域名），已部署国内镜像站：
 
 - **主站**：继续使用 Cloudflare Pages（`blog.es007.com`）
-- **国内站**：注册新域名（`.cn`）完成 ICP 备案，用于微信内分享
-- **部署方式**：Hugo 构建产物同时推送到 Cloudflare Pages 和国内对象存储（阿里云 OSS / 腾讯云 COS）+ 国内 CDN
-- **CI/CD**：GitHub Actions 一次构建，双端发布
-- **备案**：购买轻量服务器用于过审，完成后可释放
+- **国内站**：`https://blog.es007.cn`，域名 `es007.cn` 需完成 ICP 备案
+- **部署方式**：GitHub Actions 构建后 rsync 推送到阿里云 ECS（182.92.95.178），Nginx 提供静态文件服务
+- **服务器配置**：Nginx `/etc/nginx/conf.d/blog.conf`，静态文件根目录 `/var/www/blog/`，HTTPS 由 Let's Encrypt certbot 自动续期
+- **GitHub Secrets**：`DEPLOY_SSH_KEY`（服务器 SSH 私钥）
 
 ## 文章配图规范
 
