@@ -1,4 +1,4 @@
-name: Deploy to Aliyun OSS
+name: Deploy to China Server
 
 on:
   push:
@@ -20,20 +20,14 @@ jobs:
       - name: Build for China site
         run: hugo --gc --minify --baseURL "https://blog.es007.cn/"
 
-      - name: Install ossutil
-        run: |
-          curl -fsSL https://gosspublic.alicdn.com/ossutil/install.sh | sudo bash
-
-      - name: Deploy to OSS
+      - name: Deploy to server
         env:
-          OSS_ACCESS_KEY_ID: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
-          OSS_ACCESS_KEY_SECRET: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
         run: |
-          ossutil config \
-            -e oss-cn-beijing.aliyuncs.com \
-            -i "$OSS_ACCESS_KEY_ID" \
-            -k "$OSS_ACCESS_KEY_SECRET"
-          ossutil sync ./public/ oss://es007-blog/ \
-            --delete \
-            --force \
-            --retry-times 3
+          mkdir -p ~/.ssh
+          echo "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H 182.92.95.178 >> ~/.ssh/known_hosts 2>/dev/null
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/deploy_key" \
+            ./public/ root@182.92.95.178:/var/www/blog/
