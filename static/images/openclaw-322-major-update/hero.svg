@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" font-family="Noto Sans CJK SC, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#ef4444"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Grid pattern -->
+  <g opacity="0.05" stroke="#94a3b8" stroke-width="1">
+    <line x1="0" y1="0" x2="0" y2="630"/><line x1="60" y1="0" x2="60" y2="630"/>
+    <line x1="120" y1="0" x2="120" y2="630"/><line x1="180" y1="0" x2="180" y2="630"/>
+    <line x1="240" y1="0" x2="240" y2="630"/><line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="360" y1="0" x2="360" y2="630"/><line x1="420" y1="0" x2="420" y2="630"/>
+    <line x1="480" y1="0" x2="480" y2="630"/><line x1="540" y1="0" x2="540" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/><line x1="660" y1="0" x2="660" y2="630"/>
+    <line x1="720" y1="0" x2="720" y2="630"/><line x1="780" y1="0" x2="780" y2="630"/>
+    <line x1="840" y1="0" x2="840" y2="630"/><line x1="900" y1="0" x2="900" y2="630"/>
+    <line x1="960" y1="0" x2="960" y2="630"/><line x1="1020" y1="0" x2="1020" y2="630"/>
+    <line x1="1080" y1="0" x2="1080" y2="630"/><line x1="1140" y1="0" x2="1140" y2="630"/>
+    <line x1="0" y1="60" x2="1200" y2="60"/><line x1="0" y1="120" x2="1200" y2="120"/>
+    <line x1="0" y1="180" x2="1200" y2="180"/><line x1="0" y1="240" x2="1200" y2="240"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/><line x1="0" y1="360" x2="1200" y2="360"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/><line x1="0" y1="480" x2="1200" y2="480"/>
+    <line x1="0" y1="540" x2="1200" y2="540"/>
+  </g>
+  <!-- Version badge -->
+  <rect x="60" y="60" width="180" height="40" rx="20" fill="url(#accent)" opacity="0.9"/>
+  <text x="150" y="86" text-anchor="middle" fill="white" font-size="18" font-weight="700">v2026.3.22</text>
+  <!-- Title -->
+  <text x="60" y="160" fill="white" font-size="48" font-weight="800">OpenClaw 3.22 重磅更新</text>
+  <text x="60" y="220" fill="#94a3b8" font-size="28">插件架构换血 / 安全大修 / 模型扩军</text>
+  <!-- Architecture boxes -->
+  <!-- Old API (crossed out) -->
+  <rect x="60" y="280" width="240" height="100" rx="8" fill="#1e293b" stroke="#ef4444" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="180" y="320" text-anchor="middle" fill="#ef4444" font-size="16" font-weight="600">extension-api</text>
+  <text x="180" y="350" text-anchor="middle" fill="#64748b" font-size="14">已废弃</text>
+  <line x1="80" y1="290" x2="280" y2="370" stroke="#ef4444" stroke-width="2" opacity="0.6"/>
+  <line x1="280" y1="290" x2="80" y2="370" stroke="#ef4444" stroke-width="2" opacity="0.6"/>
+  <!-- Arrow -->
+  <text x="340" y="340" fill="#64748b" font-size="36">&#x2192;</text>
+  <!-- New SDK -->
+  <rect x="400" y="280" width="240" height="100" rx="8" fill="#1e293b" stroke="#22c55e" stroke-width="2"/>
+  <text x="520" y="320" text-anchor="middle" fill="#22c55e" font-size="16" font-weight="600">plugin-sdk/*</text>
+  <text x="520" y="350" text-anchor="middle" fill="#94a3b8" font-size="14">全新模块化 SDK</text>
+  <!-- ClawHub -->
+  <rect x="700" y="280" width="220" height="100" rx="8" fill="#1e293b" stroke="url(#blue)" stroke-width="2"/>
+  <text x="810" y="320" text-anchor="middle" fill="#38bdf8" font-size="16" font-weight="600">ClawHub</text>
+  <text x="810" y="350" text-anchor="middle" fill="#94a3b8" font-size="14">官方插件市场</text>
+  <!-- Security shield -->
+  <rect x="980" y="280" width="160" height="100" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+  <text x="1060" y="315" text-anchor="middle" fill="#f59e0b" font-size="28">&#x1F6E1;</text>
+  <text x="1060" y="350" text-anchor="middle" fill="#f59e0b" font-size="14" font-weight="600">安全加固</text>
+  <!-- Bottom stats -->
+  <rect x="60" y="430" width="1080" height="2" fill="#334155" opacity="0.5"/>
+  <!-- Stat 1 -->
+  <text x="60" y="490" fill="#f97316" font-size="36" font-weight="800">10+</text>
+  <text x="60" y="520" fill="#94a3b8" font-size="16">安全补丁</text>
+  <!-- Stat 2 -->
+  <text x="300" y="490" fill="#3b82f6" font-size="36" font-weight="800">GPT-5.4</text>
+  <text x="300" y="520" fill="#94a3b8" font-size="16">默认模型升级</text>
+  <!-- Stat 3 -->
+  <text x="600" y="490" fill="#22c55e" font-size="36" font-weight="800">48h</text>
+  <text x="600" y="520" fill="#94a3b8" font-size="16">Agent 超时上限</text>
+  <!-- Stat 4 -->
+  <text x="840" y="490" fill="#a78bfa" font-size="36" font-weight="800">Matrix</text>
+  <text x="840" y="520" fill="#94a3b8" font-size="16">新增渠道支持</text>
+  <!-- Official OpenClaw pixel lobster (PNG, cairosvg compatible) -->
+  <image href="/images/shared/pixel-lobster.png" x="1060" y="530" width="100" height="100" opacity="0.4"/>
+</svg>
