@@ -136,3 +136,9 @@ tags: ["标签1", "标签2"]
 - JSON 序列化必须 `ensure_ascii=False`，否则中文显示为 `\uXXXX` 转义
 - 微信不支持 SVG 图片，需转 PNG 后上传到微信素材库
 - 微信过滤外链，脚本自动转为脚注
+
+## 微信 API 代理排查
+
+- 代理配置：阿里云 `/etc/nginx/conf.d/wechat-proxy.conf`，`listen 80 default_server` 必须显式声明，否则 Certbot 生成的 `blog.conf` 会按字母序抢占默认 server，IP 直连请求返回 404
+- 代理测试：`curl -s 'http://127.0.0.1/wechat-api/token?grant_type=client_credential&appid=test&secret=test' -H 'X-Proxy-Key: <key>'` 应返回 JSON（`invalid appid` 是正常的）
+- 微信发布成功但无文章变更时会静默跳过，只有实际检测到 `content/posts/` 变更才会调用 API——因此代理故障可能被掩盖
