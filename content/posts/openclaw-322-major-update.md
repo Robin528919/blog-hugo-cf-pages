@@ -18,6 +18,8 @@ tags: ["AI", "OpenClaw", "智能体", "安全"]
 
 ## 一、插件系统大重构：旧时代翻篇
 
+![插件系统迁移路径：extension-api → plugin-sdk](/images/openclaw-322-major-update/plugin-migration.svg)
+
 这次 3.22 最核心的变化——OpenClaw 的插件生态，换骨了。
 
 旧的 `openclaw/extension-api` 被彻底移除。没有兼容层，没有过渡期，一刀切。取而代之的是全新的 `openclaw/plugin-sdk/*` 模块化接口。
@@ -63,6 +65,8 @@ openclaw skills update --all
 
 3.22 一口气打了十多项安全补丁。
 
+![3.22 安全修复总览：10+ 漏洞一次性封堵](/images/openclaw-322-major-update/security-fixes.svg)
+
 ### Windows SMB 凭证泄露
 
 攻击者可以通过构造特殊的 `file://` 或 UNC 路径，在媒体加载环节触发 Windows 自动发起 SMB 认证握手——你的 OpenClaw 以为在加载图片，实际上在把 Windows 登录凭证往外送。
@@ -88,6 +92,8 @@ openclaw skills update --all
 ---
 
 ## 三、模型生态再扩张
+
+![模型生态扩张：3.22 模型阵营一览](/images/openclaw-322-major-update/model-ecosystem.svg)
 
 ### GPT-5.4 默认上位
 

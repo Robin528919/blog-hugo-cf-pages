@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" font-family="Noto Sans CJK SC, sans-serif">
+  <rect width="1000" height="420" fill="#0f172a"/>
+  <text x="500" y="40" fill="#ffffff" font-size="22" font-weight="700" text-anchor="middle">插件系统迁移路径：extension-api → plugin-sdk</text>
+
+  <!-- Left: Old system -->
+  <g transform="translate(50, 80)">
+    <text x="150" y="20" fill="#ef4444" font-size="16" font-weight="600" text-anchor="middle">旧架构（已废弃）</text>
+    <rect x="0" y="35" width="300" height="70" rx="10" fill="#1e293b" stroke="#ef4444" stroke-width="2" stroke-dasharray="6,3"/>
+    <text x="150" y="65" fill="#ef4444" font-size="15" font-weight="600" text-anchor="middle">openclaw/extension-api</text>
+    <text x="150" y="88" fill="#64748b" font-size="13" text-anchor="middle">单体接口，无模块化</text>
+    <!-- Cross -->
+    <line x1="20" y1="45" x2="280" y2="95" stroke="#ef4444" stroke-width="2" opacity="0.5"/>
+    <line x1="280" y1="45" x2="20" y2="95" stroke="#ef4444" stroke-width="2" opacity="0.5"/>
+
+    <rect x="0" y="120" width="300" height="55" rx="10" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+    <text x="150" y="145" fill="#64748b" font-size="14" text-anchor="middle">npm install（无审核）</text>
+    <text x="150" y="163" fill="#475569" font-size="12" text-anchor="middle">质量参差不齐</text>
+
+    <rect x="0" y="190" width="300" height="55" rx="10" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+    <text x="150" y="215" fill="#64748b" font-size="14" text-anchor="middle">Chrome 扩展中继</text>
+    <text x="150" y="233" fill="#475569" font-size="12" text-anchor="middle">已移除</text>
+  </g>
+
+  <!-- Arrow -->
+  <g transform="translate(380, 160)">
+    <rect x="0" y="0" width="80" height="40" rx="20" fill="#334155"/>
+    <text x="40" y="27" fill="#f97316" font-size="24" font-weight="700" text-anchor="middle">→</text>
+  </g>
+
+  <!-- Right: New system -->
+  <g transform="translate(500, 80)">
+    <text x="225" y="20" fill="#22c55e" font-size="16" font-weight="600" text-anchor="middle">新架构（3.22+）</text>
+
+    <rect x="0" y="35" width="450" height="70" rx="10" fill="#1e293b" stroke="#22c55e" stroke-width="2"/>
+    <text x="225" y="65" fill="#22c55e" font-size="15" font-weight="600" text-anchor="middle">openclaw/plugin-sdk/*</text>
+    <text x="225" y="88" fill="#94a3b8" font-size="13" text-anchor="middle">模块化子路径导入，按需加载</text>
+
+    <!-- Sub modules -->
+    <rect x="0" y="115" width="140" height="45" rx="8" fill="#022c22" stroke="#22c55e" stroke-width="1"/>
+    <text x="70" y="142" fill="#22c55e" font-size="12" font-weight="600" text-anchor="middle">plugin-sdk/core</text>
+
+    <rect x="155" y="115" width="140" height="45" rx="8" fill="#022c22" stroke="#22c55e" stroke-width="1"/>
+    <text x="225" y="142" fill="#22c55e" font-size="12" font-weight="600" text-anchor="middle">plugin-sdk/ui</text>
+
+    <rect x="310" y="115" width="140" height="45" rx="8" fill="#022c22" stroke="#22c55e" stroke-width="1"/>
+    <text x="380" y="142" fill="#22c55e" font-size="12" font-weight="600" text-anchor="middle">plugin-sdk/tools</text>
+
+    <!-- ClawHub -->
+    <rect x="0" y="175" width="220" height="55" rx="10" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+    <image href="/images/shared/pixel-lobster.png" x="10" y="185" width="30" height="30"/>
+    <text x="130" y="200" fill="#3b82f6" font-size="14" font-weight="600" text-anchor="middle">ClawHub（首选）</text>
+    <text x="130" y="218" fill="#94a3b8" font-size="12" text-anchor="middle">官方审核，质量可控</text>
+
+    <rect x="235" y="175" width="215" height="55" rx="10" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+    <text x="342" y="200" fill="#94a3b8" font-size="14" text-anchor="middle">npm（回退）</text>
+    <text x="342" y="218" fill="#475569" font-size="12" text-anchor="middle">ClawHub 找不到时</text>
+
+    <!-- Cross-platform -->
+    <rect x="0" y="245" width="450" height="55" rx="10" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="225" y="270" fill="#8b5cf6" font-size="14" font-weight="600" text-anchor="middle">跨生态兼容：Claude Code / Codex / Cursor 插件自动映射</text>
+    <text x="225" y="288" fill="#64748b" font-size="12" text-anchor="middle">外部 Skills 自动转换为 OpenClaw 技能</text>
+  </g>
+
+  <!-- Bottom summary -->
+  <rect x="50" y="365" width="900" height="40" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="500" y="391" fill="#f97316" font-size="15" font-weight="700" text-anchor="middle">迁移要点：将 import 路径从 openclaw/extension-api 替换为 openclaw/plugin-sdk/* 对应子模块</text>
+</svg>

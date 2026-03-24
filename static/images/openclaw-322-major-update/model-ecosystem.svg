@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 380" font-family="Noto Sans CJK SC, sans-serif">
+  <rect width="1000" height="380" fill="#0f172a"/>
+  <text x="500" y="40" fill="#ffffff" font-size="22" font-weight="700" text-anchor="middle">模型生态扩张：3.22 模型阵营一览</text>
+
+  <!-- OpenClaw Hub in center -->
+  <g transform="translate(370, 130)">
+    <rect x="0" y="0" width="260" height="80" rx="12" fill="#1e293b" stroke="#f97316" stroke-width="2"/>
+    <image href="/images/shared/pixel-lobster.png" x="15" y="20" width="40" height="40"/>
+    <text x="145" y="38" fill="#f97316" font-size="18" font-weight="700" text-anchor="middle">OpenClaw Gateway</text>
+    <text x="145" y="60" fill="#94a3b8" font-size="13" text-anchor="middle">模型路由器</text>
+  </g>
+
+  <!-- Connection lines -->
+  <line x1="370" y1="170" x2="180" y2="100" stroke="#334155" stroke-width="1.5"/>
+  <line x1="370" y1="170" x2="180" y2="180" stroke="#334155" stroke-width="1.5"/>
+  <line x1="370" y1="170" x2="180" y2="260" stroke="#334155" stroke-width="1.5"/>
+  <line x1="630" y1="170" x2="780" y2="100" stroke="#334155" stroke-width="1.5"/>
+  <line x1="630" y1="170" x2="780" y2="180" stroke="#334155" stroke-width="1.5"/>
+  <line x1="630" y1="170" x2="780" y2="260" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Left models -->
+  <!-- OpenAI -->
+  <g transform="translate(20, 75)">
+    <rect x="0" y="0" width="160" height="55" rx="10" fill="#1e293b" stroke="#22c55e" stroke-width="2"/>
+    <text x="80" y="24" fill="#22c55e" font-size="14" font-weight="700" text-anchor="middle">OpenAI</text>
+    <text x="80" y="43" fill="#94a3b8" font-size="12" text-anchor="middle">GPT-5.4 (默认)</text>
+    <rect x="120" y="5" width="35" height="16" rx="3" fill="#22c55e" opacity="0.2"/>
+    <text x="137" y="16" fill="#22c55e" font-size="9" font-weight="600" text-anchor="middle">NEW</text>
+  </g>
+
+  <!-- MiniMax -->
+  <g transform="translate(20, 155)">
+    <rect x="0" y="0" width="160" height="55" rx="10" fill="#1e293b" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="80" y="24" fill="#8b5cf6" font-size="14" font-weight="700" text-anchor="middle">MiniMax</text>
+    <text x="80" y="43" fill="#94a3b8" font-size="12" text-anchor="middle">M2.5 → M2.7</text>
+    <rect x="120" y="5" width="35" height="16" rx="3" fill="#8b5cf6" opacity="0.2"/>
+    <text x="137" y="16" fill="#8b5cf6" font-size="9" font-weight="600" text-anchor="middle">UP</text>
+  </g>
+
+  <!-- Anthropic Vertex -->
+  <g transform="translate(20, 235)">
+    <rect x="0" y="0" width="160" height="55" rx="10" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+    <text x="80" y="24" fill="#3b82f6" font-size="14" font-weight="700" text-anchor="middle">Anthropic</text>
+    <text x="80" y="43" fill="#94a3b8" font-size="12" text-anchor="middle">Vertex AI 接入</text>
+    <rect x="120" y="5" width="35" height="16" rx="3" fill="#3b82f6" opacity="0.2"/>
+    <text x="137" y="16" fill="#3b82f6" font-size="9" font-weight="600" text-anchor="middle">NEW</text>
+  </g>
+
+  <!-- Right models -->
+  <!-- xAI Grok -->
+  <g transform="translate(780, 75)">
+    <rect x="0" y="0" width="160" height="55" rx="10" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
+    <text x="80" y="24" fill="#94a3b8" font-size="14" font-weight="700" text-anchor="middle">xAI Grok</text>
+    <text x="80" y="43" fill="#64748b" font-size="12" text-anchor="middle">目录同步最新</text>
+  </g>
+
+  <!-- Z.AI GLM -->
+  <g transform="translate(780, 155)">
+    <rect x="0" y="0" width="160" height="55" rx="10" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
+    <text x="80" y="24" fill="#94a3b8" font-size="14" font-weight="700" text-anchor="middle">Z.AI GLM</text>
+    <text x="80" y="43" fill="#64748b" font-size="12" text-anchor="middle">4.5 / 4.6 系列</text>
+  </g>
+
+  <!-- Qwen DashScope -->
+  <g transform="translate(780, 235)">
+    <rect x="0" y="0" width="160" height="55" rx="10" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
+    <text x="80" y="24" fill="#94a3b8" font-size="14" font-weight="700" text-anchor="middle">Qwen/通义</text>
+    <text x="80" y="43" fill="#64748b" font-size="12" text-anchor="middle">DashScope 按量付费</text>
+  </g>
+
+  <!-- Bottom bar -->
+  <rect x="30" y="320" width="940" height="45" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="200" y="348" fill="#22c55e" font-size="16" font-weight="800" text-anchor="middle">GPT-5.4 默认</text>
+  <line x1="340" y1="330" x2="340" y2="355" stroke="#334155" stroke-width="1"/>
+  <text x="500" y="348" fill="#3b82f6" font-size="16" font-weight="800" text-anchor="middle">Vertex AI 新接入</text>
+  <line x1="660" y1="330" x2="660" y2="355" stroke="#334155" stroke-width="1"/>
+  <text x="800" y="348" fill="#8b5cf6" font-size="16" font-weight="800" text-anchor="middle">MiniMax 合并升级</text>
+</svg>

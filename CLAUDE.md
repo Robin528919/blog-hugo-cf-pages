@@ -26,6 +26,7 @@ python scripts/wechat/publish.py --all --dry-run --project-root .
 ```
 
 > 部署：推送到 GitHub 即可，Cloudflare Pages 自动构建。手动部署备用：`wrangler pages deployment create ./public --project-name blog-hugo-cf-pages`
+> 检查 Cloudflare 部署状态：`npx wrangler pages deployment list --project-name blog-hugo-cf-pages`
 
 **提交前必须**（按顺序执行）：
 1. `find static/images -name "*.svg" | while read svg; do png="${svg%.svg}.png"; if [ ! -f "$png" ] || [ "$svg" -nt "$png" ]; then rsvg-convert -w 900 "$svg" -o "$png"; fi; done` — SVG→PNG 预渲染（防止微信 emoji 乱码）
@@ -45,6 +46,7 @@ tags: ["标签1", "标签2"]
 ```
 
 - `draft: true` 仅在 `hugo server -D` 时可见，不会被生产构建
+- `date` 必须早于当前时间，Hugo 默认不构建未来日期的文章（无需设 `buildFuture`，直接用过去的时间）
 - 文档类内容如需发布为博客文章，必须放 `content/posts/` 并添加 front matter
 
 ## 目录结构与约束
@@ -119,6 +121,8 @@ tags: ["标签1", "标签2"]
 - SVG 配图采用暗色主题（`#0f172a` 背景），与博客风格一致
 - 技术文章建议至少包含：架构图/流程图 + 对比表/数据可视化
 - SVG 的 `font-family` 必须避免 macOS 专属字体（`system-ui`/`-apple-system`），CI 上 cairosvg 转 PNG 时会渲染为方块；publish.py 已自动替换为 `Noto Sans CJK SC`
+- SVG 中禁止使用 emoji 字符（如 🦞），cairosvg 转 PNG 时会渲染为方块；改用 `<image href="/images/shared/xxx.png">` 引用 PNG 图片
+- `static/images/shared/` — 跨文章共享素材（如 OpenClaw 官方像素龙虾 `pixel-lobster.png`）
 
 ## 微信公众号发布注意事项（scripts/wechat/）
 
