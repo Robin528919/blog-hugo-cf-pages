@@ -120,6 +120,7 @@ tags: ["标签1", "标签2"]
 - 优先使用 SVG 格式（体积小、矢量清晰、加载快）
 - SVG 配图采用暗色主题（`#0f172a` 背景），与博客风格一致
 - 技术文章建议至少包含：架构图/流程图 + 对比表/数据可视化
+- 正文插图密度：每篇文章至少 3-4 张 SVG 配图（hero + 每个核心章节至少 1 张），避免纯文字长文
 - SVG 的 `font-family` 必须避免 macOS 专属字体（`system-ui`/`-apple-system`），CI 上 cairosvg 转 PNG 时会渲染为方块；publish.py 已自动替换为 `Noto Sans CJK SC`
 - SVG 中禁止使用 emoji 字符（如 🦞），cairosvg 转 PNG 时会渲染为方块；改用 `<image href="/images/shared/xxx.png">` 引用 PNG 图片
 - `static/images/shared/` — 跨文章共享素材（如 OpenClaw 官方像素龙虾 `pixel-lobster.png`）

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 340" font-family="Noto Sans CJK SC, sans-serif">
+  <rect width="1000" height="340" fill="#0f172a"/>
+  <text x="500" y="40" fill="#ffffff" font-size="22" font-weight="700" text-anchor="middle">Agent 引擎核心升级</text>
+
+  <!-- Timeout comparison -->
+  <g transform="translate(30, 70)">
+    <rect x="0" y="0" width="300" height="230" rx="12" fill="#1e293b" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="150" y="30" fill="#ffffff" font-size="16" font-weight="700" text-anchor="middle">超时上限</text>
+
+    <!-- Old -->
+    <text x="20" y="65" fill="#64748b" font-size="13">旧版</text>
+    <rect x="70" y="50" width="40" height="22" rx="4" fill="#ef4444" opacity="0.7"/>
+    <text x="125" y="66" fill="#ef4444" font-size="14" font-weight="600">600s (10 分钟)</text>
+
+    <!-- New -->
+    <text x="20" y="105" fill="#64748b" font-size="13">新版</text>
+    <rect x="70" y="90" width="210" height="22" rx="4" fill="#22c55e" opacity="0.7"/>
+    <text x="125" y="106" fill="#22c55e" font-size="14" font-weight="600">172,800s (48 小时)</text>
+
+    <!-- Multiplier -->
+    <rect x="70" y="130" width="210" height="35" rx="8" fill="#022c22" stroke="#22c55e" stroke-width="1"/>
+    <text x="175" y="153" fill="#22c55e" font-size="18" font-weight="800" text-anchor="middle">288x 提升</text>
+
+    <!-- Use case -->
+    <text x="20" y="195" fill="#64748b" font-size="12">适用场景：</text>
+    <text x="20" y="215" fill="#94a3b8" font-size="12">ACP 长任务会话</text>
+    <text x="20" y="235" fill="#94a3b8" font-size="12">大规模数据处理</text>
+    <text x="20" y="255" fill="#94a3b8" font-size="12">多轮复杂交互</text>
+  </g>
+
+  <!-- Compaction -->
+  <g transform="translate(350, 70)">
+    <rect x="0" y="0" width="300" height="230" rx="12" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="150" y="30" fill="#ffffff" font-size="16" font-weight="700" text-anchor="middle">长对话压缩</text>
+
+    <rect x="20" y="50" width="260" height="45" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="150" y="68" fill="#3b82f6" font-size="13" font-weight="600" text-anchor="middle">自动延长压缩截止时间</text>
+    <text x="150" y="86" fill="#64748b" font-size="11" text-anchor="middle">大型会话不再被超时杀掉</text>
+
+    <rect x="20" y="105" width="260" height="45" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="150" y="123" fill="#3b82f6" font-size="13" font-weight="600" text-anchor="middle">修复孤立 tool_result 块</text>
+    <text x="150" y="141" fill="#64748b" font-size="11" text-anchor="middle">残余数据不再炸掉后续请求</text>
+
+    <rect x="20" y="160" width="260" height="45" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="150" y="178" fill="#3b82f6" font-size="13" font-weight="600" text-anchor="middle">空会话压缩修复</text>
+    <text x="150" y="196" fill="#64748b" font-size="11" text-anchor="middle">不再陷入死循环</text>
+
+    <rect x="20" y="220" width="260" height="30" rx="6" fill="#1e3a5f"/>
+    <text x="150" y="240" fill="#3b82f6" font-size="12" font-weight="600" text-anchor="middle">稳定性 + 可靠性 全面提升</text>
+  </g>
+
+  <!-- New features -->
+  <g transform="translate(670, 70)">
+    <rect x="0" y="0" width="300" height="230" rx="12" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="150" y="30" fill="#ffffff" font-size="16" font-weight="700" text-anchor="middle">新功能</text>
+
+    <!-- /btw -->
+    <rect x="20" y="50" width="260" height="60" rx="8" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="35" y="72" fill="#8b5cf6" font-size="15" font-weight="700">/btw</text>
+    <text x="80" y="72" fill="#94a3b8" font-size="13">旁白问题</text>
+    <text x="35" y="95" fill="#64748b" font-size="11">快速回答，不污染当前会话上下文</text>
+
+    <!-- Sandbox -->
+    <rect x="20" y="125" width="260" height="45" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="150" y="145" fill="#f97316" font-size="13" font-weight="600" text-anchor="middle">可插拔沙盒后端</text>
+    <text x="150" y="162" fill="#64748b" font-size="11" text-anchor="middle">OpenShell / SSH（不再绑定 Docker）</text>
+
+    <!-- Backup -->
+    <rect x="20" y="180" width="260" height="45" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="150" y="200" fill="#22c55e" font-size="13" font-weight="600" text-anchor="middle">备份与恢复</text>
+    <text x="150" y="217" fill="#64748b" font-size="11" text-anchor="middle">openclaw backup create / verify</text>
+
+    <rect x="20" y="240" width="260" height="30" rx="6" fill="#2e1065"/>
+    <text x="150" y="260" fill="#8b5cf6" font-size="12" font-weight="600" text-anchor="middle">开发体验 + 运维能力 双升级</text>
+  </g>
+</svg>
