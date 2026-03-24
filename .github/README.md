@@ -1,6 +1,6 @@
 # CI/CD 流水线
 
-## deploy-oss.yml — 国内站部署
+## deploy-china.yml — 国内站部署
 
 将 Hugo 构建产物通过 rsync 部署到阿里云服务器，服务国内域名 `blog.es007.cn`。
 
