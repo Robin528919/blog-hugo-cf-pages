@@ -51,7 +51,7 @@
   <!-- Lobster icon -->
   <g transform="translate(850, 380)">
     <circle cx="70" cy="45" r="55" fill="#1e293b" stroke="#f97316" stroke-width="2" opacity="0.8"/>
-    <text x="70" y="62" font-size="50" text-anchor="middle">🦞</text>
+    <image href="/images/shared/pixel-lobster.png" x="35" y="10" width="70" height="70"/>
   </g>
 
   <!-- OpenClaw brand -->

@@ -58,7 +58,8 @@
 
   <!-- Right: OpenClaw process -->
   <g transform="translate(530, 80)">
-    <text x="220" y="25" fill="#22c55e" font-size="18" font-weight="600" text-anchor="middle">🦞 小龙虾流程（并行）</text>
+    <image href="/images/shared/pixel-lobster.png" x="125" y="6" width="20" height="20"/>
+    <text x="230" y="25" fill="#22c55e" font-size="18" font-weight="600" text-anchor="middle">小龙虾流程（并行）</text>
 
     <!-- Parallel bars -->
     <g transform="translate(0, 50)">

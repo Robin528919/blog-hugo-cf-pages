@@ -74,7 +74,7 @@
   <!-- Break the cycle label -->
   <g transform="translate(860, 470)">
     <rect x="-80" y="-45" width="160" height="90" rx="12" fill="#022c22" stroke="#22c55e" stroke-width="2"/>
-    <text x="0" y="-10" fill="#22c55e" font-size="20" text-anchor="middle">🦞</text>
+    <image href="/images/shared/pixel-lobster.png" x="-15" y="-30" width="30" height="30"/>
     <text x="0" y="15" fill="#22c55e" font-size="16" font-weight="700" text-anchor="middle">小龙虾</text>
     <text x="0" y="35" fill="#22c55e" font-size="14" text-anchor="middle">切断循环</text>
   </g>
