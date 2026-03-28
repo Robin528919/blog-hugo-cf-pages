@@ -12,6 +12,11 @@ on:
         required: false
         type: boolean
         default: false
+      force:
+        description: '强制重新发布（删除旧草稿并重建）'
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -47,8 +52,12 @@ jobs:
           WECHAT_PROXY_URL: http://182.92.95.178/wechat-api
           WECHAT_PROXY_KEY: ${{ secrets.WECHAT_PROXY_KEY }}
         run: |
+          FORCE_FLAG=""
+          if [ "${{ inputs.force }}" = "true" ]; then
+            FORCE_FLAG="--force"
+          fi
           if [ "${{ inputs.publish_all }}" = "true" ]; then
-            python scripts/wechat/publish.py --all --project-root .
+            python scripts/wechat/publish.py --all $FORCE_FLAG --project-root .
           else
             python scripts/wechat/publish.py --base-ref HEAD~1 --project-root .
           fi

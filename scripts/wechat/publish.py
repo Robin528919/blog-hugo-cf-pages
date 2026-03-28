@@ -595,6 +595,7 @@ def main():
         "--base-ref", default="HEAD~1", help="git diff 基准 ref（默认 HEAD~1）"
     )
     parser.add_argument("--all", action="store_true", help="扫描全部文章（忽略 git diff）")
+    parser.add_argument("--force", action="store_true", help="强制重新发布（删除旧草稿并重建）")
     parser.add_argument("--project-root", default=".", help="项目根目录")
     parser.add_argument(
         "--dry-run", action="store_true", help="试运行：仅转换 HTML，不调用微信 API"
@@ -629,14 +630,15 @@ def main():
             sys.exit(1)
         token = get_access_token(app_id, app_secret)
 
-    # 逐篇发布（增量模式下强制更新变更文章，全量模式跳过已发布）
+    # 逐篇发布（增量模式或 --force 时强制更新，全量模式默认跳过已发布）
     is_incremental = not args.all
+    use_force = is_incremental or args.force
     success_count = 0
     for filepath in post_files:
         try:
             if publish_post(
                 filepath, project_root, token, state,
-                args.dry_run, force=is_incremental,
+                args.dry_run, force=use_force,
             ):
                 success_count += 1
         except Exception as e:
