@@ -231,7 +231,13 @@ def save_state(project_root: str, state: dict):
 
 
 def get_slug(filepath: str) -> str:
-    """从文件路径提取 slug"""
+    """从文件路径提取 slug（优先使用 front matter 中的 slug 字段）"""
+    try:
+        post = frontmatter.load(filepath)
+        if post.get("slug"):
+            return post["slug"]
+    except Exception:
+        pass
     return Path(filepath).stem
 
 

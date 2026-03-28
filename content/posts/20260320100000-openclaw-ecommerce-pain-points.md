@@ -1,5 +1,6 @@
 ---
 title: "电商上架7大痛点，我用一只小龙虾全解决了"
+slug: "openclaw-ecommerce-pain-points"
 date: 2026-03-20T10:00:00+08:00
 draft: false
 description: "3个运营+2个美工一年烧30万只为上架？用OpenClaw（小龙虾）跑通整条链路：100 SKU 18分钟、违禁词零漏检、主图自动生成，年省20万+。"

@@ -1,5 +1,6 @@
 ---
 title: "用OpenClaw搭跨境电商团队：5个AI员工，跑通全平台矩阵"
+slug: "openclaw-cross-border-ecommerce-ai-team"
 date: 2026-03-07T11:28:00+08:00
 draft: false
 tags: ["AI", "OpenClaw", "跨境电商", "多Agent"]

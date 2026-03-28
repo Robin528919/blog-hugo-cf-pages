@@ -1,5 +1,6 @@
 ---
 title: "OpenClaw对话与角色设置完整指南：从身份定义到多智能体管理"
+slug: "openclaw-agent-setup-guide"
 date: 2026-03-17T10:00:00+08:00
 draft: false
 tags: ["AI", "OpenClaw", "Agent", "智能体"]

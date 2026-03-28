@@ -1,5 +1,6 @@
 ---
 title: "白嫖英伟达大模型：OpenClaw 接入 NVIDIA NIM 免费 API 完整指南"
+slug: "openclaw-nvidia-free-models"
 date: 2026-03-19T10:00:00+08:00
 draft: false
 tags: ["AI", "OpenClaw", "NVIDIA", "免费模型", "智能体"]
