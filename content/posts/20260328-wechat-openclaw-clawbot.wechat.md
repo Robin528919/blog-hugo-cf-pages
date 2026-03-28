@@ -7,7 +7,7 @@ description: "微信推出 ClawBot 官方插件，一条命令接入 OpenClaw，
 image: "/images/wechat-openclaw-clawbot/hero.svg"
 tags: ["AI", "OpenClaw", "微信", "智能体", "腾讯"]
 wechat_adapted: true
-wechat_source: "20260328100000-wechat-openclaw-clawbot.md"
+wechat_source: "20260328-wechat-openclaw-clawbot.md"
 ---
 
 ![微信 ClawBot：OpenClaw 正式接入 14 亿人的聊天框](/images/wechat-openclaw-clawbot/hero.svg)
