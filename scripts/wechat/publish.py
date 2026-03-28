@@ -519,9 +519,9 @@ def publish_post(
         return False
 
     title = post.get("title", slug)
-    # 微信个人订阅号标题限制严格（实测约 10 个中文字符安全）
-    if len(title) > 10:
-        title = title[:9] + "…"
+    # 微信个人订阅号标题限制 64 字符
+    if len(title) > 64:
+        title = title[:63] + "…"
         log.info("标题截断为: %s (%d字符)", title, len(title))
     description = post.get("description", "")
     body = post.content

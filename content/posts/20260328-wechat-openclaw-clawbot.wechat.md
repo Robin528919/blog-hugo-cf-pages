@@ -1,5 +1,5 @@
 ---
-title: "微信官方接入OpenClaw攻略"
+title: "微信官方接入 OpenClaw：ClawBot 插件让 14 亿人直连 AI Agent"
 slug: "wechat-openclaw-clawbot"
 date: 2026-03-28T10:00:00+08:00
 draft: false
