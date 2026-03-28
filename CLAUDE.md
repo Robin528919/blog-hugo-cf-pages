@@ -53,7 +53,7 @@ tags: ["标签1", "标签2"]
 
 - `scripts/wechat/` — 微信公众号自动发布脚本（Python），含 Markdown→微信HTML 转换、SVG→PNG、API 调用
 - `content/` — 博客文章与页面，slug 建议 `kebab-case`
-- `content/posts/` — 博客文章目录，文章发布后 URL 为 `/posts/<文件名去.md>/`
+- `content/posts/` — 博客文章目录，文件名格式 `YYYYMMDD-<slug>.md`，front matter 中 `slug` 字段锁定 URL 为 `/posts/<slug>/`
 - `layouts/` — Hugo 模板，基于 baseof.html + block 继承体系
 - `themes/` — 主题目录（按需添加，禁止跨目录复制主题实现）
 - `static/` — 静态资源
@@ -142,6 +142,8 @@ tags: ["标签1", "标签2"]
 - 博客/微信双版本发布：原文 `.md` 保持完整，微信版用 `.wechat.md`（通过 `/wechat-adapt` skill 生成）
 - `publish.py` 优先读取 `.wechat.md`，不存在则回退到 `.md`；扫描逻辑自动排除 `.wechat.md`
 - `hugo.toml` 已配置 `ignoreFiles = ['\.wechat\.md$']`，`.wechat.md` 不会构建到博客
+- 微信编辑器会把列表标签（`<ol>`/`<li>`）间的换行渲染为空列表项，publish.py 已在输出时压缩空白
+- 手动触发全量强制重新发布：GitHub Actions → `publish_all=true` + `force=true`，会删除旧草稿并重建
 
 ## 微信 API 代理排查
 
