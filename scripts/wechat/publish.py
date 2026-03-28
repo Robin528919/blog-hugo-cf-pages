@@ -163,23 +163,10 @@ def freepublish(token: str, media_id: str) -> str | None:
 
 
 def declare_original(token: str, media_id: str):
-    """声明原创（通过 freepublish/markasoriginal）"""
-    url = f"{WECHAT_API}/freepublish/markasoriginal"
-    params = {"access_token": token}
-    body = json.dumps({
-        "media_id": media_id,
-        "index": 0,
-    }, ensure_ascii=False).encode("utf-8")
-    resp = _api_post(
-        url, params=params, data=body,
-        headers={"Content-Type": "application/json; charset=utf-8"},
-        timeout=30,
-    )
-    data = resp.json()
-    if data.get("errcode", 0) != 0:
-        log.warning("原创声明失败（个人订阅号可能无权限）: %s", data)
-    else:
-        log.info("原创声明成功")
+    """尝试声明原创（个人订阅号 API 不支持，仅供企业号使用）"""
+    # 个人订阅号的原创声明需要在微信编辑器中手动操作，
+    # freepublish/markasoriginal 仅适用于已发布文章且需要企业号权限
+    log.info("原创声明需在微信编辑器中手动操作（个人订阅号 API 不支持）")
 
 
 # ─── 文章检测 ───────────────────────────────────────────────
@@ -555,7 +542,7 @@ def publish_post(
     article = {
         "title": title,
         "author": "E.S",
-        "digest": description[:30] if description else "",
+        "digest": description[:120] if description else "",
         "content": wechat_html,
         "content_source_url": original_url,
         "need_open_comment": 0,

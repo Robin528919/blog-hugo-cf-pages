@@ -133,8 +133,8 @@ tags: ["标签1", "标签2"]
 - 全量模式（workflow_dispatch）：跳过已发布文章，仅处理新文章
 - 每篇文章必须有配图（`static/images/<slug>/hero.svg`），否则封面为纯色占位块
 - 个人订阅号标题限制 64 字符，publish.py 超长自动截断
-- `author` 字段不可用（个人订阅号报 45110），已移除
-- `digest` 摘要限制约 30 字符
+- `author` 字段已恢复使用（"E.S"），个人订阅号当前可正常设置
+- `digest` 摘要限制 120 字符
 - JSON 序列化必须 `ensure_ascii=False`，否则中文显示为 `\uXXXX` 转义
 - 微信不支持 SVG 图片，需转 PNG 后上传到微信素材库
 - 微信过滤外链，脚本自动转为脚注
