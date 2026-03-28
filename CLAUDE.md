@@ -113,6 +113,7 @@ tags: ["标签1", "标签2"]
 - **部署方式**：GitHub Actions 构建后 rsync 推送到阿里云 ECS（182.92.95.178），Nginx 提供静态文件服务
 - **服务器配置**：Nginx `/etc/nginx/conf.d/blog.conf`，静态文件根目录 `/var/www/blog/`，HTTPS 由 Let's Encrypt certbot 自动续期
 - **GitHub Secrets**：`DEPLOY_SSH_KEY`（服务器 SSH 私钥）
+- SSH 密钥：`~/.ssh/es007cn.pem`（需 `chmod 600`），GitHub Secret `DEPLOY_SSH_KEY` 与之对应
 
 ## 文章配图规范
 
@@ -138,6 +139,9 @@ tags: ["标签1", "标签2"]
 - 微信不支持 SVG 图片，需转 PNG 后上传到微信素材库
 - 微信过滤外链，脚本自动转为脚注
 - 微信内容审核会拦截海外平台名称（Telegram、WhatsApp、Discord 等）和敏感词（逆向、封号、VPN、翻墙等），errcode 45166 表示内容命中敏感词，需替换后重新发布
+- 博客/微信双版本发布：原文 `.md` 保持完整，微信版用 `.wechat.md`（通过 `/wechat-adapt` skill 生成）
+- `publish.py` 优先读取 `.wechat.md`，不存在则回退到 `.md`；扫描逻辑自动排除 `.wechat.md`
+- `hugo.toml` 已配置 `ignoreFiles = ['\.wechat\.md$']`，`.wechat.md` 不会构建到博客
 
 ## 微信 API 代理排查
 
