@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="450" fill="url(#bg2)"/>
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" fill="#e2e8f0" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700">ClawBot 通信架构</text>
+  <!-- User Phone -->
+  <g transform="translate(100, 100)">
+    <rect x="-50" y="-30" width="100" height="180" rx="12" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+    <rect x="-40" y="-10" width="80" height="130" rx="4" fill="#0f172a"/>
+    <!-- Chat bubbles inside phone -->
+    <rect x="-35" y="0" width="55" height="18" rx="8" fill="#07c160"/>
+    <text x="-30" y="13" fill="white" font-family="Noto Sans CJK SC, sans-serif" font-size="8">帮我写一份...</text>
+    <rect x="-15" y="25" width="55" height="18" rx="8" fill="#334155"/>
+    <text x="-10" y="38" fill="#e2e8f0" font-family="Noto Sans CJK SC, sans-serif" font-size="8">好的，已完成...</text>
+    <rect x="-35" y="50" width="55" height="18" rx="8" fill="#07c160"/>
+    <text x="-30" y="63" fill="white" font-family="Noto Sans CJK SC, sans-serif" font-size="8">发邮件给...</text>
+    <!-- Home button -->
+    <circle cx="0" cy="130" r="8" fill="none" stroke="#475569" stroke-width="1"/>
+    <text x="0" y="185" text-anchor="middle" fill="#94a3b8" font-family="Noto Sans CJK SC, sans-serif" font-size="13" font-weight="500">iPhone 微信</text>
+  </g>
+  <!-- Arrow 1 -->
+  <g>
+    <line x1="180" y1="190" x2="270" y2="190" stroke="#07c160" stroke-width="2"/>
+    <polygon points="270,185 280,190 270,195" fill="#07c160"/>
+    <text x="225" y="180" text-anchor="middle" fill="#07c160" font-family="Noto Sans CJK SC, sans-serif" font-size="10">微信协议</text>
+  </g>
+  <!-- WeChat Server -->
+  <g transform="translate(350, 130)">
+    <rect x="-60" y="-20" width="120" height="100" rx="8" fill="#1e293b" stroke="#07c160" stroke-width="1.5"/>
+    <text x="0" y="5" text-anchor="middle" fill="#07c160" font-family="Noto Sans CJK SC, sans-serif" font-size="13" font-weight="600">微信服务器</text>
+    <text x="0" y="25" text-anchor="middle" fill="#94a3b8" font-family="Noto Sans CJK SC, sans-serif" font-size="10">插件体系</text>
+    <rect x="-45" y="35" width="90" height="24" rx="4" fill="#07c160" opacity="0.15" stroke="#07c160" stroke-width="0.5"/>
+    <text x="0" y="52" text-anchor="middle" fill="#07c160" font-family="Noto Sans CJK SC, sans-serif" font-size="11">ClawBot 插件</text>
+  </g>
+  <!-- Arrow 2 -->
+  <g>
+    <line x1="420" y1="190" x2="510" y2="190" stroke="#f59e0b" stroke-width="2"/>
+    <polygon points="510,185 520,190 510,195" fill="#f59e0b"/>
+    <line x1="520" y1="190" x2="510" y2="190" stroke="#f59e0b" stroke-width="2"/>
+    <text x="465" y="180" text-anchor="middle" fill="#f59e0b" font-family="Noto Sans CJK SC, sans-serif" font-size="10">HTTPS API</text>
+  </g>
+  <!-- OpenClaw Gateway -->
+  <g transform="translate(600, 100)">
+    <rect x="-70" y="-20" width="140" height="140" rx="8" fill="#1e293b" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="0" y="5" text-anchor="middle" fill="#ef4444" font-family="Noto Sans CJK SC, sans-serif" font-size="13" font-weight="600">OpenClaw 网关</text>
+    <line x1="-55" y1="15" x2="55" y2="15" stroke="#334155" stroke-width="0.5"/>
+    <text x="0" y="35" text-anchor="middle" fill="#94a3b8" font-family="Noto Sans CJK SC, sans-serif" font-size="10">渠道路由</text>
+    <text x="0" y="55" text-anchor="middle" fill="#94a3b8" font-family="Noto Sans CJK SC, sans-serif" font-size="10">智能体引擎</text>
+    <text x="0" y="75" text-anchor="middle" fill="#94a3b8" font-family="Noto Sans CJK SC, sans-serif" font-size="10">MCP 服务</text>
+    <text x="0" y="95" text-anchor="middle" fill="#94a3b8" font-family="Noto Sans CJK SC, sans-serif" font-size="10">插件管理</text>
+  </g>
+  <!-- Arrow 3 -->
+  <g>
+    <line x1="670" y1="150" x2="730" y2="110" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="6,3"/>
+    <line x1="670" y1="200" x2="730" y2="200" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="6,3"/>
+    <line x1="670" y1="200" x2="730" y2="250" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="6,3"/>
+  </g>
+  <!-- LLM Providers -->
+  <g transform="translate(800, 80)">
+    <rect x="-55" y="-15" width="110" height="35" rx="6" fill="#1e293b" stroke="#3b82f6" stroke-width="1"/>
+    <text x="0" y="7" text-anchor="middle" fill="#93c5fd" font-family="Noto Sans CJK SC, sans-serif" font-size="11">大模型（GPT/Claude）</text>
+  </g>
+  <g transform="translate(800, 170)">
+    <rect x="-55" y="-15" width="110" height="35" rx="6" fill="#1e293b" stroke="#14b8a6" stroke-width="1"/>
+    <text x="0" y="7" text-anchor="middle" fill="#5eead4" font-family="Noto Sans CJK SC, sans-serif" font-size="11">MCP 工具</text>
+  </g>
+  <g transform="translate(800, 230)">
+    <rect x="-55" y="-15" width="110" height="35" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1"/>
+    <text x="0" y="7" text-anchor="middle" fill="#c4b5fd" font-family="Noto Sans CJK SC, sans-serif" font-size="11">技能 / 插件</text>
+  </g>
+  <!-- Data flow legend -->
+  <g transform="translate(100, 380)">
+    <text x="0" y="0" fill="#64748b" font-family="Noto Sans CJK SC, sans-serif" font-size="11">数据流向：</text>
+    <line x1="80" y1="-4" x2="110" y2="-4" stroke="#07c160" stroke-width="2"/>
+    <text x="115" y="0" fill="#64748b" font-family="Noto Sans CJK SC, sans-serif" font-size="10">微信协议</text>
+    <line x1="200" y1="-4" x2="230" y2="-4" stroke="#f59e0b" stroke-width="2"/>
+    <text x="235" y="0" fill="#64748b" font-family="Noto Sans CJK SC, sans-serif" font-size="10">HTTPS 接口</text>
+    <line x1="330" y1="-4" x2="360" y2="-4" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="6,3"/>
+    <text x="365" y="0" fill="#64748b" font-family="Noto Sans CJK SC, sans-serif" font-size="10">模型调用</text>
+  </g>
+</svg>

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="wechat-green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#07c160"/>
+      <stop offset="100%" style="stop-color:#06ae56"/>
+    </linearGradient>
+    <linearGradient id="claw-red" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="400" fill="url(#bg)"/>
+  <!-- Grid pattern -->
+  <g opacity="0.05">
+    <line x1="0" y1="50" x2="900" y2="50" stroke="#94a3b8" stroke-width="0.5"/>
+    <line x1="0" y1="100" x2="900" y2="100" stroke="#94a3b8" stroke-width="0.5"/>
+    <line x1="0" y1="150" x2="900" y2="150" stroke="#94a3b8" stroke-width="0.5"/>
+    <line x1="0" y1="200" x2="900" y2="200" stroke="#94a3b8" stroke-width="0.5"/>
+    <line x1="0" y1="250" x2="900" y2="250" stroke="#94a3b8" stroke-width="0.5"/>
+    <line x1="0" y1="300" x2="900" y2="300" stroke="#94a3b8" stroke-width="0.5"/>
+    <line x1="0" y1="350" x2="900" y2="350" stroke="#94a3b8" stroke-width="0.5"/>
+  </g>
+  <!-- WeChat icon (left) -->
+  <g transform="translate(200, 160)">
+    <circle cx="0" cy="0" r="55" fill="url(#wechat-green)" opacity="0.15"/>
+    <circle cx="0" cy="0" r="40" fill="url(#wechat-green)"/>
+    <!-- Chat bubble shape -->
+    <ellipse cx="-8" cy="-5" rx="22" ry="16" fill="white" opacity="0.95"/>
+    <polygon points="-18,8 -12,8 -20,18" fill="white" opacity="0.95"/>
+    <!-- Dots in chat bubble -->
+    <circle cx="-15" cy="-5" r="2" fill="#07c160"/>
+    <circle cx="-8" cy="-5" r="2" fill="#07c160"/>
+    <circle cx="-1" cy="-5" r="2" fill="#07c160"/>
+    <text x="0" y="75" text-anchor="middle" fill="#94a3b8" font-family="Noto Sans CJK SC, sans-serif" font-size="14" font-weight="500">微信</text>
+  </g>
+  <!-- Connection line with arrow -->
+  <g>
+    <line x1="280" y1="160" x2="410" y2="160" stroke="#475569" stroke-width="2" stroke-dasharray="8,4"/>
+    <polygon points="410,155 420,160 410,165" fill="#475569"/>
+    <!-- ClawBot label on connection -->
+    <rect x="310" y="135" width="90" height="24" rx="12" fill="#334155"/>
+    <text x="355" y="151" text-anchor="middle" fill="#e2e8f0" font-family="Noto Sans CJK SC, sans-serif" font-size="11" font-weight="600">ClawBot 插件</text>
+  </g>
+  <!-- OpenClaw icon (center-right) -->
+  <g transform="translate(490, 160)">
+    <circle cx="0" cy="0" r="55" fill="url(#claw-red)" opacity="0.15"/>
+    <circle cx="0" cy="0" r="40" fill="url(#claw-red)"/>
+    <!-- Claw/lobster symbol -->
+    <path d="M-12,-15 C-20,-25 -5,-28 -5,-18 L-5,-5" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M12,-15 C20,-25 5,-28 5,-18 L5,-5" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <ellipse cx="0" cy="5" rx="12" ry="10" fill="white" opacity="0.9"/>
+    <circle cx="-4" cy="2" r="2" fill="#ef4444"/>
+    <circle cx="4" cy="2" r="2" fill="#ef4444"/>
+    <text x="0" y="75" text-anchor="middle" fill="#94a3b8" font-family="Noto Sans CJK SC, sans-serif" font-size="14" font-weight="500">OpenClaw</text>
+  </g>
+  <!-- Arrow to tasks -->
+  <g>
+    <line x1="560" y1="160" x2="640" y2="120" stroke="#475569" stroke-width="1.5" stroke-dasharray="6,3"/>
+    <line x1="560" y1="160" x2="640" y2="160" stroke="#475569" stroke-width="1.5" stroke-dasharray="6,3"/>
+    <line x1="560" y1="160" x2="640" y2="200" stroke="#475569" stroke-width="1.5" stroke-dasharray="6,3"/>
+  </g>
+  <!-- Task boxes -->
+  <g>
+    <rect x="645" y="105" width="100" height="30" rx="6" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+    <text x="695" y="124" text-anchor="middle" fill="#93c5fd" font-family="Noto Sans CJK SC, sans-serif" font-size="12">AI 任务</text>
+    <rect x="645" y="145" width="100" height="30" rx="6" fill="#1e3a3f" stroke="#14b8a6" stroke-width="1"/>
+    <text x="695" y="164" text-anchor="middle" fill="#5eead4" font-family="Noto Sans CJK SC, sans-serif" font-size="12">MCP 工具</text>
+    <rect x="645" y="185" width="100" height="30" rx="6" fill="#3b1f3f" stroke="#a855f7" stroke-width="1"/>
+    <text x="695" y="204" text-anchor="middle" fill="#c4b5fd" font-family="Noto Sans CJK SC, sans-serif" font-size="12">插件生态</text>
+  </g>
+  <!-- Title -->
+  <text x="450" y="320" text-anchor="middle" fill="#f1f5f9" font-family="Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700">微信 x OpenClaw</text>
+  <text x="450" y="350" text-anchor="middle" fill="#94a3b8" font-family="Noto Sans CJK SC, sans-serif" font-size="15">ClawBot — 14 亿人的 AI Agent 入口</text>
+  <!-- Decorative dots -->
+  <circle cx="50" cy="50" r="3" fill="#3b82f6" opacity="0.3"/>
+  <circle cx="850" cy="350" r="3" fill="#ef4444" opacity="0.3"/>
+  <circle cx="100" cy="350" r="4" fill="#07c160" opacity="0.2"/>
+  <circle cx="800" cy="50" r="4" fill="#a855f7" opacity="0.2"/>
+</svg>
