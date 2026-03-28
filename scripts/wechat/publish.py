@@ -316,7 +316,11 @@ def md_to_wechat_html(md_content: str) -> str:
             fn_section.append(fn_item)
         soup.append(fn_section)
 
-    return str(soup)
+    result = str(soup)
+    # 压缩列表标签间的空白，防止微信编辑器把换行渲染为空列表项
+    result = re.sub(r">\s+<li", "><li", result)
+    result = re.sub(r"</li>\s+<", "</li><", result)
+    return result
 
 
 # ─── 图片处理 ───────────────────────────────────────────────
