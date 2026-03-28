@@ -124,6 +124,7 @@ tags: ["标签1", "标签2"]
 - SVG 的 `font-family` 必须避免 macOS 专属字体（`system-ui`/`-apple-system`），CI 上 cairosvg 转 PNG 时会渲染为方块；publish.py 已自动替换为 `Noto Sans CJK SC`
 - SVG 中禁止使用 emoji 字符（如 🦞），cairosvg 转 PNG 时会渲染为方块；改用 `<image href="/images/shared/xxx.png">` 引用 PNG 图片
 - `static/images/shared/` — 跨文章共享素材（如 OpenClaw 官方像素龙虾 `pixel-lobster.png`）
+- SVG 配图中的文字描述必须优先使用中文，仅保留专有名词（如产品名 OpenClaw、ClawBot）为英文
 
 ## 微信公众号发布注意事项（scripts/wechat/）
 
@@ -136,9 +137,11 @@ tags: ["标签1", "标签2"]
 - JSON 序列化必须 `ensure_ascii=False`，否则中文显示为 `\uXXXX` 转义
 - 微信不支持 SVG 图片，需转 PNG 后上传到微信素材库
 - 微信过滤外链，脚本自动转为脚注
+- 微信内容审核会拦截海外平台名称（Telegram、WhatsApp、Discord 等）和敏感词（逆向、封号、VPN、翻墙等），errcode 45166 表示内容命中敏感词，需替换后重新发布
 
 ## 微信 API 代理排查
 
 - 代理配置：阿里云 `/etc/nginx/conf.d/wechat-proxy.conf`，`listen 80 default_server` 必须显式声明，否则 Certbot 生成的 `blog.conf` 会按字母序抢占默认 server，IP 直连请求返回 404
 - 代理测试：`curl -s 'http://127.0.0.1/wechat-api/token?grant_type=client_credential&appid=test&secret=test' -H 'X-Proxy-Key: <key>'` 应返回 JSON（`invalid appid` 是正常的）
 - 微信发布成功但无文章变更时会静默跳过，只有实际检测到 `content/posts/` 变更才会调用 API——因此代理故障可能被掩盖
+- Nginx `proxy_pass` 禁止直接写域名，必须使用 `resolver` + `set $backend` 变量 + `rewrite` 方式，避免启动时 DNS 解析失败（已在 `wechat-proxy.conf` 中修复）
