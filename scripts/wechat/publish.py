@@ -255,7 +255,6 @@ def md_to_wechat_html(md_content: str) -> str:
             pygments_style="monokai",
             guess_lang=False,
         ),
-        "nl2br",
     ]
     html = markdown.markdown(md_content, extensions=extensions)
 
