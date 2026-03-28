@@ -4,3 +4,4 @@
 - [project_wechatsync_plan.md](project_wechatsync_plan.md) — 计划引入 Wechatsync 多平台同步（知乎、掘金等），现有微信脚本保持不动
 - [reference_wechat_account.md](reference_wechat_account.md) — 微信公众号（亿思007小龙虾）AppID 和配置信息
 - [reference_aliyun_server.md](reference_aliyun_server.md) — 阿里云 ECS 服务器连接信息（182.92.95.178）
+- [feedback_svg_chinese.md](feedback_svg_chinese.md) — SVG 配图文字必须优先使用中文
