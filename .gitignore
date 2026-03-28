@@ -4,3 +4,5 @@ public/
 .hugo_build.lock
 .claude/skills/ui-ux-pro-max/*
 .cache/
+__pycache__/
+scripts/wechat/preview_*.html
