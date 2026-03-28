@@ -1,6 +1,7 @@
 baseURL = "https://blog.es007.com/"
 languageCode = "zh-cn"
 title = "E.S 博客"
+ignoreFiles = ['\.wechat\.md$']
 
 [outputs]
 home = ["HTML", "RSS"]

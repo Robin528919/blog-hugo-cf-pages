@@ -199,18 +199,18 @@ def get_changed_posts(project_root: str, base_ref: str) -> list[str]:
         files = [
             os.path.join(project_root, f.strip())
             for f in result.stdout.strip().split("\n")
-            if f.strip().endswith(".md")
+            if f.strip().endswith(".md") and not f.strip().endswith(".wechat.md")
         ]
         return [f for f in files if os.path.exists(f)]
     except subprocess.CalledProcessError:
         log.warning("git diff 失败，回退到扫描全部文章")
-        return list(Path(posts_dir).glob("*.md"))
+        return [str(p) for p in Path(posts_dir).glob("*.md") if not str(p).endswith(".wechat.md")]
 
 
 def get_all_posts(project_root: str) -> list[str]:
-    """获取所有文章文件"""
+    """获取所有文章文件（排除 .wechat.md 适配版）"""
     posts_dir = os.path.join(project_root, "content", "posts")
-    return [str(p) for p in Path(posts_dir).glob("*.md")]
+    return [str(p) for p in Path(posts_dir).glob("*.md") if not str(p).endswith(".wechat.md")]
 
 
 def load_state(project_root: str) -> dict:
@@ -475,6 +475,14 @@ def _png_chunk(chunk_type: bytes, data: bytes) -> bytes:
 # ─── 主流程 ─────────────────────────────────────────────────
 
 
+def _resolve_wechat_path(filepath: str) -> str:
+    """优先使用 .wechat.md 微信适配版，不存在则回退到原文"""
+    wechat_path = filepath.replace(".md", ".wechat.md")
+    if os.path.exists(wechat_path):
+        return wechat_path
+    return filepath
+
+
 def publish_post(
     filepath: str,
     project_root: str,
@@ -490,8 +498,13 @@ def publish_post(
     slug = get_slug(filepath)
     log.info("─── 处理文章: %s ───", slug)
 
+    # 优先使用微信适配版 .wechat.md
+    actual_path = _resolve_wechat_path(filepath)
+    if actual_path != filepath:
+        log.info("使用微信适配版: %s", os.path.basename(actual_path))
+
     # 解析 front matter
-    post = frontmatter.load(filepath)
+    post = frontmatter.load(actual_path)
     if post.get("draft", False):
         log.info("跳过草稿: %s", slug)
         return False
